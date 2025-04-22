@@ -1,7 +1,15 @@
-[gd_scene format=3 uid="uid://2ghtfskwi80q"]
+[gd_scene load_steps=2 format=3 uid="uid://dhymvjv7enm7w"]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(191, 206)
+[ext_resource type="Script" uid="uid://cxiimrn5mjn68" path="res://login.gd" id="1_6uxbt"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 191.0
+offset_top = 206.0
+offset_right = 191.0
+offset_bottom = 206.0
+script = ExtResource("1_6uxbt")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -21,10 +29,10 @@ layout_mode = 2
 layout_mode = 2
 text = "E-mail:                                 "
 
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/HBoxContainer"]
+[node name="LineEditEmail" type="LineEdit" parent="UI/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
-placeholder_text = "Insira Seu Login"
+placeholder_text = "Digite seu E-mail"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBoxContainer"]
 layout_mode = 2
@@ -33,12 +41,12 @@ layout_mode = 2
 layout_mode = 2
 text = "Senha:                                 "
 
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/HBoxContainer2"]
+[node name="LineEditSenha" type="LineEdit" parent="UI/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 placeholder_text = "Insira Sua Senha"
 
-[node name="Button" type="Button" parent="UI/VBoxContainer/HBoxContainer2"]
+[node name="ButtonVerSenha" type="Button" parent="UI/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "👁"
 
@@ -51,23 +59,35 @@ offset_bottom = -57.0
 theme_override_font_sizes/font_size = 60
 text = "Tela de Login"
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonLogin" type="Button" parent="."]
+layout_mode = 0
 offset_left = 321.0
 offset_top = 240.0
 offset_right = 459.0
 offset_bottom = 331.0
 text = "ENTRAR"
 
-[node name="Button2" type="Button" parent="."]
+[node name="ButtonEsqueciSenha" type="Button" parent="."]
+layout_mode = 0
 offset_left = 94.0
 offset_top = 120.0
 offset_right = 240.0
 offset_bottom = 187.0
 text = "ESQUECI A SENHA"
 
-[node name="Button3" type="Button" parent="."]
+[node name="ButtonCadastro" type="Button" parent="."]
+layout_mode = 0
 offset_left = 513.0
 offset_top = 127.0
 offset_right = 655.0
 offset_bottom = 194.0
 text = "FAZER CADASTRO"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="LabelMensagem" type="Label" parent="."]
+layout_mode = 0
+offset_left = -94.0
+offset_top = -144.0
+offset_right = -34.0
+offset_bottom = -121.0

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://3cbfj11br60x"]
 
+[ext_resource type="Script" uid="uid://d2qaqrhigno6y" path="res://main.gd" id="1_3dxm6"]
 [ext_resource type="Texture2D" uid="uid://b8vyibmpwbnwt" path="res://minimal3.webp" id="1_fos0i"]
-[ext_resource type="Script" uid="uid://cm3oeagp0ukey" path="res://ui.gd" id="1_r0du0"]
 [ext_resource type="Texture2D" uid="uid://b73r58had355g" path="res://trophy.png" id="2_r0du0"]
-[ext_resource type="Texture2D" uid="uid://c4f22x86qme2o" path="res://DALL·E 2025-03-23 21.13.36 - Crie um logotipo para um jogo de lógica baseado em estruturas de dados. O design deve ser moderno e minimalista, utilizando uma paleta de cores que va.webp" id="4_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://bvgcdkktgcxl3" path="res://DALL·E 2025-03-23 21.13.36 - Crie um logotipo para um jogo de lógica baseado em estruturas de dados. O design deve ser moderno e minimalista, utilizando uma paleta de cores que va.webp" id="4_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://bbugcllmncpp0" path="res://cat-removebg-preview.png" id="5_fos0i"]
 
 [sub_resource type="FontFile" id="FontFile_r0du0"]
@@ -47,7 +47,7 @@ offset_left = 244.0
 offset_top = 148.0
 offset_right = 284.0
 offset_bottom = 188.0
-script = ExtResource("1_r0du0")
+script = ExtResource("1_3dxm6")
 
 [node name="MainContainer" type="VBoxContainer" parent="UI"]
 layout_mode = 0

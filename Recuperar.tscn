@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdlnay02u4fdb"]
+[gd_scene load_steps=3 format=3 uid="uid://cdlnay02u4fdb"]
 
 [ext_resource type="Texture2D" uid="uid://ns0kv4u4om75" path="res://arrow back.png" id="1_d64nr"]
+[ext_resource type="Script" uid="uid://bxr0kunaygna2" path="res://recuperar.gd" id="1_yc3ap"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_yc3ap")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -19,19 +21,19 @@ offset_bottom = 192.0
 theme_override_font_sizes/font_size = 60
 text = "Recuperação de Senha"
 
-[node name="Button" type="Button" parent="UI"]
+[node name="ButtonRecuperarSenha" type="Button" parent="UI"]
 layout_mode = 0
-offset_left = 427.0
-offset_top = 458.0
-offset_right = 687.0
-offset_bottom = 546.0
+offset_left = 438.0
+offset_top = 480.0
+offset_right = 698.0
+offset_bottom = 568.0
 text = "RECUPERAR CONTA"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 196.0
-offset_top = 331.0
+offset_top = 280.0
 offset_right = 924.0
-offset_bottom = 522.0
+offset_bottom = 471.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -40,7 +42,7 @@ layout_mode = 2
 layout_mode = 2
 text = "E-mail:                                "
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="LineEditInsiraEmail" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 placeholder_text = "Insira o E-mail da Sua Conta"

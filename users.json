@@ -1,0 +1,6 @@
+{
+    "user1": {
+        "username": "user1",
+        "password": "hashed_password_here"
+    }
+}

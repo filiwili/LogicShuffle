@@ -1,0 +1,34 @@
+{
+    "asd": {
+        "nome": "asd",
+        "senha_hash": "scrypt:32768:8:1$kxfpnsqXoQNIfzJS$a94c5df1d6bf7b31a45f6d5cffad200cb58b5c69dc8f6f134b3be7aa66fe1ef05ff2794292d5ecd1d4f215368ff670b514d0e54dc780d979a9de451b7d0bc260"
+    },
+    "asd@gmail.com": {
+        "nome": "asd@gmail.com",
+        "senha_hash": "scrypt:32768:8:1$76JB78jlfipiHFXC$f18f6816b9a6a29dbdec923c245dd6b9d82a591bb9baa2da1946464feea338e703ebecc0f0371224f9cbf1d533ee2c3180b2ca4744a9a54eacf220cc3cc00aaa"
+    },
+    "d@gmail.com": {
+        "nome": "d@gmail.com",
+        "senha_hash": "scrypt:32768:8:1$ygEK3vWX6kvtyHzT$ba98ba65bb535604c3a58537f0ee4c51dc2f892ce4d3747e337ef91d78abdfcd9e553005a8225872842dca401b1f562bd907092fbfcc7787c73807a6872e1733"
+    },
+    "testando@gmail.com": {
+        "nome": "usuarioteste",
+        "senha_hash": "scrypt:32768:8:1$SgzMa89bPsaPKqx8$71c3e91724b80b15670ae60ff4e7e01132c706d51ccd13c291111ba6e48c7d020788f7661828c50e560fc2d34ffd1330072318a980326ec795cdb54bd52bc5f1"
+    },
+    "testando1@gmail.com": {
+        "nome": "testea",
+        "senha_hash": "scrypt:32768:8:1$PI5MFA19OUgrcqrm$cd0b066c55e4741c385dd3a05d2c6142f0384017fb13242d6af9f17e6199d7cd1d37f02e1446557717d90d599e27923673ce1e700558620f85b8d8d7b55f3ca5"
+    },
+    "testando2@gmail.com": {
+        "nome": "teste",
+        "senha_hash": "scrypt:32768:8:1$XzO8xVO7KQzweIdF$11995b9780aaacdeb249a4969e264b4b67435b96b13a7870b205674fbf0c9a475fe66ac11559f7d7907a0b1b3cf94d6a7fbd74b1ca39734f4b6d5331357b9244"
+    },
+    "testando3@gmail.com": {
+        "nome": "testeb",
+        "senha_hash": "scrypt:32768:8:1$Ih8ACLkwycWvDl7z$267f5c0f22535eac81b440bd4d7d12ec7afdc8ec93b801aaa7f75e95586313d9e6d2f651f94f22b16da69b42a5ee257d4f11bfae902ecc7df94983534383280e"
+    },
+    "testando4@gmail.com": {
+        "nome": "testeab",
+        "senha_hash": "scrypt:32768:8:1$V62Vg30L6OcK91eE$a3ac260960cb7572938397a684d8f40b86d5d1d8063d51426482a979a377526861d7c2c18c4e49ee039768c397a06c8a58fa905f755599cb50ebd5fffaaef9d7"
+    }
+}

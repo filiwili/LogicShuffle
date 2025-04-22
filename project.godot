@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="LogicShuffle"
+run/main_scene="uid://3cbfj11br60x"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
