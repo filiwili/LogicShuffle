@@ -26,34 +26,41 @@ def cadastro():
     email = dados.get("email")
     senha = dados.get("senha")
 
-    if not nome or not email or not senha:
-        return jsonify({"success": False, "message": "Todos os campos são obrigatórios."}), 400
+    try:
+        if not nome or not email or not senha:
+            return jsonify({"success": False, "message": "Todos os campos são obrigatórios."}), 400
 
-    if len(nome) < 3 or len(nome) > 20:
-        return jsonify({"success": False, "message": "Nome de usuário inválido (3 a 20 caracteres)."}), 400
+        if len(nome) < 3 or len(nome) > 20:
+            return jsonify({"success": False, "message": "Nome de usuário inválido (3 a 20 caracteres)."}), 400
 
-    if len(senha) < 6 or len(senha) > 20:
-        return jsonify({"success": False, "message": "Senha deve ter entre 6 e 20 caracteres!"}), 400
+        if len(senha) < 6 or len(senha) > 20:
+            return jsonify({"success": False, "message": "Senha deve ter entre 6 e 20 caracteres!"}), 400
 
-    usuarios = carregar_usuarios()
+        usuarios = carregar_usuarios()
 
-    if email in usuarios:
-        return jsonify({"success": False, "message": "E-mail já cadastrado."}), 409
+        if email in usuarios:
+            return jsonify({"success": False, "message": "E-mail já cadastrado."}), 409
 
-    for user in usuarios.values():
-        if user["nome"].lower() == nome.lower():
-            return jsonify({"success": False, "message": "Nome de usuário já existe!"}), 409
+        for user in usuarios.values():
+            if user["nome"].lower() == nome.lower():
+                return jsonify({"success": False, "message": "Nome de usuário já existe!"}), 409
 
-    senha_hash = generate_password_hash(senha)
+        senha_hash = generate_password_hash(senha)
 
-    usuarios[email] = {
-        "nome": nome,
-        "senha_hash": senha_hash
-    }
+        usuarios[email] = {
+            "nome": nome,
+            "senha_hash": senha_hash
+        }
 
-    salvar_usuarios(usuarios)
+        salvar_usuarios(usuarios)
 
-    return jsonify({"success": True, "message": "Cadastro realizado com sucesso!"}), 200
+        return jsonify({"success": True, "message": "Cadastro realizado com sucesso!"}), 200
+    
+    except Exception as e:
+
+        print("Algo errado aconteceu durante o cadastro!")
+        print(f'Erro: {e}')
+
 
 @app.route('/login', methods=['POST'])
 def login():
