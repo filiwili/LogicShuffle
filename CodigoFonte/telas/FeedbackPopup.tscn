@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsbyfan5vphvi"]
+
+[ext_resource type="Script" uid="uid://dhtr28yn5rfdc" path="res://FeedbackPopup.gd" id="1_k4vsk"]
+
+[node name="Node2D" type="ConfirmationDialog"]
+script = ExtResource("1_k4vsk")

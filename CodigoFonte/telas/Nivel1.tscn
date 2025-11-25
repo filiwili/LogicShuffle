@@ -1,0 +1,206 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5pjekkx5mwly"]
+
+[ext_resource type="Script" uid="uid://ckvy7lpy2cxfc" path="res://nivel_1.gd" id="1_kuiop"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kuiop")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lblNivel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 21.0
+offset_right = 595.0
+offset_bottom = 44.0
+text = "Nível 1 (TUTORIAL)"
+
+[node name="lblObjetivo" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 72.0
+offset_right = 172.0
+offset_bottom = 95.0
+text = "Objetivo: A B D C E"
+
+[node name="lblPontuacao" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 37.0
+offset_right = 1142.0
+offset_bottom = 60.0
+text = "Pontuação: 1000"
+
+[node name="lblTempo" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 4.0
+offset_right = 1129.0
+offset_bottom = 27.0
+text = "Tempo: 0s"
+
+[node name="VBoxPilha" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 220.0
+offset_right = 636.0
+offset_bottom = 413.0
+
+[node name="Label" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "Pilha"
+
+[node name="lblPilhaSlot1" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "Slot 1"
+
+[node name="lblPilhaSlot2" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "Slot 2"
+
+[node name="lblPilhaSlot3" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "Slot 3"
+
+[node name="lblPilhaSlot4" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "Slot 4"
+
+[node name="lblPilhaSlot5" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "Slot 5"
+
+[node name="btnToDequeFromPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "→ Deque"
+
+[node name="HBoxFila" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 382.0
+offset_right = 485.0
+offset_bottom = 422.0
+
+[node name="Label" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "Fila"
+
+[node name="lblFilaSlot1" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "Slot 1"
+
+[node name="lblFilaSlot2" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "Slot 2"
+
+[node name="lblFilaSlot3" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "Slot 3"
+
+[node name="btnToDequeFromFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "→ Deque"
+
+[node name="HBoxDeque" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 448.0
+offset_right = 728.0
+offset_bottom = 488.0
+
+[node name="Label" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Deque"
+
+[node name="btnAddFront" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemFront" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "-"
+
+[node name="lblDequeSlot1" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Slot 1"
+
+[node name="lblDequeSlot2" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Slot 2"
+
+[node name="lblDequeSlot3" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Slot 3"
+
+[node name="lblDequeSlot4" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Slot 4"
+
+[node name="lblDequeSlot5" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Slot 5"
+
+[node name="btnAddBack" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemBack" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "-"
+
+[node name="btnToPilha" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "→ Pilha"
+
+[node name="btnToFila" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "→ Fila"
+
+[node name="btnVerificar" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 542.0
+offset_right = 648.0
+offset_bottom = 573.0
+text = "Conferir Resposta"
+
+[node name="lblMensagem" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 699.0
+offset_top = 118.0
+offset_right = 739.0
+offset_bottom = 141.0
+
+[node name="LineEditLetra" type="LineEdit" parent="UI"]
+layout_mode = 2
+offset_left = 107.0
+offset_top = 551.0
+offset_right = 176.0
+offset_bottom = 591.0
+max_length = 1
+
+[node name="lblIncDec" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 512.0
+offset_right = 274.0
+offset_bottom = 535.0
+text = "Incremento/Decremento"
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 102.0
+offset_right = 384.0
+offset_bottom = 203.0
+text = "Restrições do Nível:
+-Infinitas inclusões/exclusões
+-Incremento/Decremento somente no Deque
+-Fila 3 Slots (Espaços)
+-A resposta deve estar inserida no Deque"

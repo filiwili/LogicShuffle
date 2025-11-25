@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dfn3s1agmj2ii"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 261.0
+offset_right = 551.0
+offset_bottom = 316.0
+scale = Vector2(1.0016, 1)
+theme_override_font_sizes/font_size = 40
+text = "Nível 1 Concluido!"
+
+[node name="Label2" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 385.0
+offset_right = 357.0
+offset_bottom = 443.0
+scale = Vector2(1.0016, 1)
+theme_override_font_sizes/font_size = 30
+text = "+5 pontos!"
+
+[node name="Button" type="Button" parent="UI"]
+offset_left = 460.0
+offset_top = 485.0
+offset_right = 595.0
+offset_bottom = 563.0
+scale = Vector2(1.0016, 1)
+theme_override_font_sizes/font_size = 30
+text = "Nível 2"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 174.0
+offset_top = 95.0
+offset_right = 956.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 60
+text = "Minigame Pilha/Fila/Deque"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 205.0
+offset_top = 483.0
+offset_right = 340.0
+offset_bottom = 561.0
+scale = Vector2(1.0016, 1)
+theme_override_font_sizes/font_size = 30
+text = "Nível 1"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 696.0
+offset_top = 494.0
+offset_right = 823.0
+offset_bottom = 564.0
+scale = Vector2(1.0016, 1)
+theme_override_colors/font_color = Color(0.611765, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Sair"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 209.0
+offset_top = 330.0
+offset_right = 370.0
+offset_bottom = 372.0
+scale = Vector2(1.0016, 1)
+theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.513165, 0.83416, 1)
+theme_override_font_sizes/font_size = 30
+text = "Parabéns!!!"

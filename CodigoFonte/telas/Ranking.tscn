@@ -1,0 +1,121 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq1ccqnucnsit"]
+
+[ext_resource type="Texture2D" uid="uid://rwpsbgom5abk" path="res://arrow back.png" id="1_7h2db"]
+[ext_resource type="Script" uid="uid://31uer5gm0h5d" path="res://ranking.gd" id="1_dy8k8"]
+[ext_resource type="Texture2D" uid="uid://bd61g6fiuwms8" path="res://minimal3.webp" id="2_3sl48"]
+[ext_resource type="Script" uid="uid://bnwckymgyx8ad" path="res://minimal_3.gd" id="3_q7xjs"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dy8k8")
+
+[node name="Minimal3" type="Sprite2D" parent="."]
+position = Vector2(576.5, 317)
+scale = Vector2(1.89352, 1.83882)
+texture = ExtResource("2_3sl48")
+script = ExtResource("3_q7xjs")
+
+[node name="ArrowBack" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 64.0
+offset_right = 618.0
+offset_bottom = 576.0
+scale = Vector2(0.243164, 0.200195)
+texture_normal = ExtResource("1_7h2db")
+
+[node name="LabelTitulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 81.0
+offset_right = 680.0
+offset_bottom = 104.0
+text = "Ranking Global"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 139.0
+offset_right = 1037.0
+offset_bottom = 423.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="CabecalhoRanking" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelPosicao" type="Label" parent="ScrollContainer/VBoxContainer/CabecalhoRanking"]
+layout_mode = 2
+text = "       Posição           "
+
+[node name="LabelJogador" type="Label" parent="ScrollContainer/VBoxContainer/CabecalhoRanking"]
+layout_mode = 2
+text = "             Jogador                                  "
+
+[node name="LabelPontuacao" type="Label" parent="ScrollContainer/VBoxContainer/CabecalhoRanking"]
+layout_mode = 2
+text = "     Pontuação           "
+
+[node name="LabelNiveis" type="Label" parent="ScrollContainer/VBoxContainer/CabecalhoRanking"]
+layout_mode = 2
+text = "Níveis Completados"
+
+[node name="ListaRanking" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelSuaPosicao" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 485.0
+offset_right = 1036.0
+offset_bottom = 566.0
+
+[node name="LabelSuaPosicao" type="Label" parent="PanelSuaPosicao"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 27.0
+offset_right = 129.0
+offset_bottom = 50.0
+
+[node name="HBoxContainerUsuario" type="HBoxContainer" parent="PanelSuaPosicao"]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 10.0
+offset_right = 285.0
+offset_bottom = 50.0
+
+[node name="TextureRectSuaFoto" type="TextureRect" parent="PanelSuaPosicao/HBoxContainerUsuario"]
+layout_mode = 2
+
+[node name="LabelSeuNome" type="Label" parent="PanelSuaPosicao/HBoxContainerUsuario"]
+layout_mode = 2
+
+[node name="LabelSeusNiveis" type="Label" parent="PanelSuaPosicao"]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 31.0
+offset_right = 671.0
+offset_bottom = 54.0
+
+[node name="LabelSuaPontuacao" type="Label" parent="PanelSuaPosicao"]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 31.0
+offset_right = 509.0
+offset_bottom = 54.0
+
+[node name="LabelCarregando" type="Label" parent="."]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 57.0
+offset_right = 798.0
+offset_bottom = 80.0
+
+[node name="LabelErro" type="Label" parent="."]
+layout_mode = 0
+offset_left = 757.0
+offset_top = 112.0
+offset_right = 797.0
+offset_bottom = 135.0

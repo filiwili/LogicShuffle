@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://y6odq7wueyv7"]
+
+[ext_resource type="Script" uid="uid://dqeyxxqwr0tsk" path="res://jogar.gd" id="1_jsfle"]
+[ext_resource type="Texture2D" uid="uid://cl2fn7tgg2awt" path="res://DALL·E 2025-03-23 21.13.36 - Crie um logotipo para um jogo de lógica baseado em estruturas de dados. O design deve ser moderno e minimalista, utilizando uma paleta de cores que va.webp" id="1_lspci"]
+[ext_resource type="Texture2D" uid="uid://bd61g6fiuwms8" path="res://minimal3.webp" id="1_t20a4"]
+[ext_resource type="Texture2D" uid="uid://rwpsbgom5abk" path="res://arrow back.png" id="2_mgaki"]
+[ext_resource type="Texture2D" uid="uid://di3doq1dyrctk" path="res://assets/jogo 2/Egypt/LionSphinx.png" id="5_162md"]
+[ext_resource type="Texture2D" uid="uid://bgyrbxlf66w01" path="res://assets/jogo 2/Vinhas.png" id="6_h1uuh"]
+[ext_resource type="Texture2D" uid="uid://bldppdvcrd7c6" path="res://assets/jogo 2/Egypt/Snail.png" id="7_qexdx"]
+[ext_resource type="Texture2D" uid="uid://yikxmqbw1k73" path="res://assets/jogo 2/Egypt/Snail2.png" id="8_sd51p"]
+[ext_resource type="Texture2D" uid="uid://c0r4s32fjjiut" path="res://assets/jogo 2/Egypt/Pillar.png" id="9_64e0g"]
+[ext_resource type="Texture2D" uid="uid://d3midt85qoo1h" path="res://assets/jogo 2/Egypt/BeeFly.png" id="10_odakm"]
+[ext_resource type="Texture2D" uid="uid://csgbe4kkl74xb" path="res://assets/jogo 2/Egypt/Tree.png" id="11_ruy5q"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(292, 385)
+script = ExtResource("1_jsfle")
+
+[node name="Minimal3" type="Sprite2D" parent="."]
+position = Vector2(285, -68)
+scale = Vector2(1.89352, 1.83882)
+texture = ExtResource("1_t20a4")
+
+[node name="ArrowBack" type="TextureButton" parent="Minimal3"]
+offset_left = -232.9
+offset_top = -133.781
+offset_right = 279.1
+offset_bottom = 378.219
+scale = Vector2(0.169097, 0.157858)
+texture_normal = ExtResource("2_mgaki")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 406.0
+offset_bottom = 66.0
+
+[node name="ButtonMinigame1" type="Button" parent="UI/MainContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.588235, 0.498039, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Dungeon Cave Quest"
+
+[node name="ButtonMinigame2" type="Button" parent="UI/MainContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.588235, 0.498039, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Pyramid Maker"
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -141.0
+offset_right = 516.0
+offset_bottom = -58.0
+theme_override_colors/font_color = Color(0.639216, 0.360784, 0.0352941, 1)
+theme_override_font_sizes/font_size = 60
+text = "LOGIC SHUFFLE"
+
+[node name="Dall·e2025-03-2321_13_36-CrieUmLogotipoParaUmJogoDeLógicaBaseadoEmEstruturasDeDados_ODesignDeveSerModernoEMinimalista,UtilizandoUmaPaletaDeCoresQueVa" type="Sprite2D" parent="."]
+position = Vector2(293, -234)
+scale = Vector2(0.300079, 0.183533)
+texture = ExtResource("1_lspci")
+
+[node name="LionSphinx" type="Sprite2D" parent="."]
+position = Vector2(-123.875, 74.9062)
+scale = Vector2(2.34687, 2.03528)
+texture = ExtResource("5_162md")
+
+[node name="Snail" type="Sprite2D" parent="."]
+position = Vector2(727, 208)
+scale = Vector2(0.642857, 0.629121)
+texture = ExtResource("7_qexdx")
+
+[node name="Snail2" type="Sprite2D" parent="."]
+position = Vector2(58, -12)
+texture = ExtResource("8_sd51p")
+
+[node name="Pillar" type="Sprite2D" parent="."]
+position = Vector2(-203, 187)
+scale = Vector2(1.20833, 0.928571)
+texture = ExtResource("9_64e0g")
+
+[node name="Pillar2" type="Sprite2D" parent="."]
+position = Vector2(-130.5, 190.5)
+scale = Vector2(1.22917, 0.9375)
+texture = ExtResource("9_64e0g")
+
+[node name="Pillar3" type="Sprite2D" parent="."]
+position = Vector2(-50.5, 191.25)
+scale = Vector2(1.14583, 0.96875)
+texture = ExtResource("9_64e0g")
+
+[node name="BeeFly" type="Sprite2D" parent="."]
+position = Vector2(614, -255)
+scale = Vector2(0.67548, 0.453231)
+texture = ExtResource("10_odakm")
+
+[node name="BeeFly2" type="Sprite2D" parent="."]
+position = Vector2(575, -125)
+scale = Vector2(0.75, 0.608844)
+texture = ExtResource("10_odakm")
+
+[node name="BeeFly3" type="Sprite2D" parent="."]
+position = Vector2(681, -19)
+scale = Vector2(0.673077, 0.595238)
+texture = ExtResource("10_odakm")
+
+[node name="BeeFly4" type="Sprite2D" parent="."]
+position = Vector2(739, -154)
+scale = Vector2(0.740385, 0.676871)
+texture = ExtResource("10_odakm")
+
+[node name="Vinhas2" type="Sprite2D" parent="."]
+position = Vector2(192, 74.75)
+scale = Vector2(1, 1.93005)
+texture = ExtResource("6_h1uuh")
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(624, 134)
+texture = ExtResource("11_ruy5q")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(691, 133)
+texture = ExtResource("11_ruy5q")
+
+[node name="Tree3" type="Sprite2D" parent="."]
+position = Vector2(759, 124)
+texture = ExtResource("11_ruy5q")
+
+[node name="Tree4" type="Sprite2D" parent="."]
+position = Vector2(538, 132)
+texture = ExtResource("11_ruy5q")

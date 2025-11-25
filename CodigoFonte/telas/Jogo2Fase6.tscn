@@ -1,0 +1,177 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdu6wbfjnj4s2"]
+
+[ext_resource type="Script" uid="uid://bupv1dmd44m53" path="res://jogo_2_fase_6.gd" id="1_bae77"]
+[ext_resource type="Texture2D" uid="uid://bd61g6fiuwms8" path="res://minimal3.webp" id="2_ofv44"]
+[ext_resource type="Script" uid="uid://bnwckymgyx8ad" path="res://minimal_3.gd" id="3_whqkk"]
+[ext_resource type="Texture2D" uid="uid://cv7v5e1gdyrtx" path="res://assets/egito3.png" id="4_io6s6"]
+
+[node name="TreeDrawingGame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 298.0
+offset_top = 175.0
+offset_right = 298.0
+offset_bottom = 175.0
+script = ExtResource("1_bae77")
+
+[node name="Minimal3" type="Sprite2D" parent="."]
+position = Vector2(277, 144)
+scale = Vector2(1.89352, 1.83882)
+texture = ExtResource("2_ofv44")
+script = ExtResource("3_whqkk")
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = -255.0
+offset_top = -144.0
+offset_right = -151.0
+offset_bottom = -84.0
+theme_override_colors/font_color = Color(0.625768, 0.176745, 0.285143, 1)
+theme_override_font_sizes/font_size = 25
+text = "Sair"
+
+[node name="MainContainer" type="HSplitContainer" parent="."]
+layout_mode = 0
+offset_top = -152.0
+offset_right = 342.0
+offset_bottom = 30.0
+
+[node name="RightPanel" type="Panel" parent="MainContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/RightPanel"]
+layout_mode = 0
+offset_left = -271.0
+offset_top = 103.0
+offset_right = 830.0
+offset_bottom = 602.0
+mouse_filter = 0
+
+[node name="BottomBar" type="HBoxContainer" parent="MainContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="NodeValueEdit" type="LineEdit" parent="MainContainer/RightPanel/VBoxContainer/BottomBar"]
+layout_mode = 2
+placeholder_text = "Valor"
+
+[node name="SubmitButton" type="Button" parent="MainContainer/RightPanel/VBoxContainer/BottomBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.453648, 0.639313, 0.769274, 1)
+theme_override_font_sizes/font_size = 25
+text = "Enviar Solução"
+
+[node name="Toolbar" type="HBoxContainer" parent="MainContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AddNodeTool" type="Button" parent="MainContainer/RightPanel/VBoxContainer/Toolbar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Add"
+
+[node name="ConnectTool" type="Button" parent="MainContainer/RightPanel/VBoxContainer/Toolbar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Conectar"
+
+[node name="MoveTool" type="Button" parent="MainContainer/RightPanel/VBoxContainer/Toolbar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Trocar"
+
+[node name="DeleteTool" type="Button" parent="MainContainer/RightPanel/VBoxContainer/Toolbar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Del"
+
+[node name="ClearButton" type="Button" parent="MainContainer/RightPanel/VBoxContainer/Toolbar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Clear"
+
+[node name="DrawingArea" type="ColorRect" parent="MainContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+color = Color(0.775063, 0.775063, 0.775063, 1)
+
+[node name="NodesContainer" type="Node2D" parent="MainContainer/RightPanel/VBoxContainer/DrawingArea"]
+
+[node name="TempoLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 529.0
+offset_top = -153.0
+offset_right = 650.0
+offset_bottom = -130.0
+text = "Tempo"
+
+[node name="HelpButton" type="Button" parent="TempoLabel"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 3.0
+offset_right = 271.0
+offset_bottom = 36.0
+text = "⚠️
+"
+
+[node name="Label" type="Label" parent="TempoLabel"]
+layout_mode = 0
+offset_left = -785.0
+offset_top = 73.0
+offset_right = -573.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 20
+text = "Barra de Ferramentas"
+
+[node name="Label2" type="Label" parent="TempoLabel"]
+layout_mode = 0
+offset_left = -288.0
+offset_top = -1.0
+offset_right = -235.0
+offset_bottom = 22.0
+text = "Nível 6"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" type="TextureRect" parent="CanvasLayer"]
+offset_left = 160.0
+offset_top = 326.0
+offset_right = 880.0
+offset_bottom = 568.0
+texture = ExtResource("4_io6s6")
+
+[node name="PopupTutorial" type="Panel" parent="CanvasLayer/Overlay"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -305.0
+offset_right = 898.0
+offset_bottom = 112.0
+
+[node name="TextLabel" type="RichTextLabel" parent="CanvasLayer/Overlay/PopupTutorial"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 29.0
+offset_right = 818.0
+offset_bottom = 374.0
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Overlay/PopupTutorial"]
+layout_mode = 0
+offset_left = 814.0
+offset_top = 5.0
+offset_right = 907.0
+offset_bottom = 36.0
+text = "❌Fechar"
+
+[node name="MensagemLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 108.0
+offset_top = -3.0
+offset_right = 416.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.793412, 0.0630922, 0.423205, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 527.0
+offset_top = -128.0
+offset_right = 628.0
+offset_bottom = -105.0
+text = "Pontuação: 0"

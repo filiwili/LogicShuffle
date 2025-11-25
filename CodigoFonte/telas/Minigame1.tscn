@@ -1,0 +1,287 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj4njeaedrs2o"]
+
+[ext_resource type="Script" uid="uid://b6ntph307l0ky" path="res://minigame_1.gd" id="1_iagm2"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(645, 521)
+script = ExtResource("1_iagm2")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="lblRestricoes" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -413.0
+offset_top = -422.0
+offset_right = -239.0
+offset_bottom = -373.0
+theme_override_font_sizes/font_size = 35
+text = "Restrições"
+
+[node name="VBoxPilha" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -457.0
+offset_right = 78.0
+offset_bottom = -151.0
+
+[node name="btnPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "Pilha"
+
+[node name="btnAddPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "-"
+
+[node name="lblPilhaSlot1" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "espaço 1"
+
+[node name="lblPilhaSlot2" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "espaço 2"
+
+[node name="lblPilhaSlot3" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "espaço 3"
+
+[node name="lblPilhaSlot4" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "espaço 4"
+
+[node name="lblPilhaSlot5" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "espaço 5"
+
+[node name="btnAddPilhaFim" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemPilhaFim" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "-"
+
+[node name="HBoxDeque" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = -21.0
+offset_top = -44.0
+offset_right = 493.0
+offset_bottom = -4.0
+
+[node name="btnDeque" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Deque"
+
+[node name="btnAddDeque" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemDeque" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "-"
+
+[node name="lblDequeSlot1" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "espaço 1"
+
+[node name="lblDequeSlot2" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "espaço 2"
+
+[node name="lblDequeSlot3" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "espaço 3"
+
+[node name="lblDequeSlot4" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "espaço 4"
+
+[node name="lblDequeSlot5" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "espaço 5"
+
+[node name="btnAddDequeFim" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemDequeFim" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "-"
+
+[node name="VBoxElementosFinal" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = -490.0
+offset_top = -18.0
+offset_right = -295.0
+offset_bottom = 32.0
+
+[node name="lblElementosFinal" type="Label" parent="UI/VBoxElementosFinal"]
+layout_mode = 2
+text = "Lista de elementos final"
+
+[node name="HBoxElementosFinal" type="HBoxContainer" parent="UI/VBoxElementosFinal"]
+layout_mode = 2
+
+[node name="lblElemFinalSlot1" type="Label" parent="UI/VBoxElementosFinal/HBoxElementosFinal"]
+layout_mode = 2
+text = "a"
+
+[node name="lblElemFinalSlot2" type="Label" parent="UI/VBoxElementosFinal/HBoxElementosFinal"]
+layout_mode = 2
+text = "b"
+
+[node name="lblElemFinalSlot3" type="Label" parent="UI/VBoxElementosFinal/HBoxElementosFinal"]
+layout_mode = 2
+text = "d"
+
+[node name="lblElemFinalSlot4" type="Label" parent="UI/VBoxElementosFinal/HBoxElementosFinal"]
+layout_mode = 2
+text = "c"
+
+[node name="lblElemFinalSlot5" type="Label" parent="UI/VBoxElementosFinal/HBoxElementosFinal"]
+layout_mode = 2
+text = "e"
+
+[node name="VBoxElementosInicial" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = -490.0
+offset_top = -124.0
+offset_right = -295.0
+offset_bottom = -74.0
+
+[node name="lblElementosInicial" type="Label" parent="UI/VBoxElementosInicial"]
+layout_mode = 2
+text = "Lista de elementos inicial"
+
+[node name="HBoxElementosInicial" type="HBoxContainer" parent="UI/VBoxElementosInicial"]
+layout_mode = 2
+
+[node name="lblElemInicialSlot1" type="Label" parent="UI/VBoxElementosInicial/HBoxElementosInicial"]
+layout_mode = 2
+text = "a"
+
+[node name="lblElemInicialSlot2" type="Label" parent="UI/VBoxElementosInicial/HBoxElementosInicial"]
+layout_mode = 2
+text = "b"
+
+[node name="lblElemInicialSlot3" type="Label" parent="UI/VBoxElementosInicial/HBoxElementosInicial"]
+layout_mode = 2
+text = "c"
+
+[node name="lblElemInicialSlot4" type="Label" parent="UI/VBoxElementosInicial/HBoxElementosInicial"]
+layout_mode = 2
+text = "d"
+
+[node name="lblElemInicialSlot5" type="Label" parent="UI/VBoxElementosInicial/HBoxElementosInicial"]
+layout_mode = 2
+text = "e"
+
+[node name="btnConferir" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = -151.0
+offset_top = 40.0
+offset_right = 33.0
+offset_bottom = 71.0
+text = "Conferir Resposta"
+
+[node name="VBoxRestricoes" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = -455.0
+offset_top = -321.0
+offset_right = -400.0
+offset_bottom = -244.0
+
+[node name="HBoxPilhaRestricoes" type="HBoxContainer" parent="UI/VBoxRestricoes"]
+layout_mode = 2
+
+[node name="lblPilha" type="Label" parent="UI/VBoxRestricoes/HBoxPilhaRestricoes"]
+layout_mode = 2
+text = "Pilha:"
+
+[node name="lblPilhaRestricoes" type="Label" parent="UI/VBoxRestricoes/HBoxPilhaRestricoes"]
+layout_mode = 2
+text = "xxxxxxxxxxxx"
+
+[node name="HBoxFilaRestricoes" type="HBoxContainer" parent="UI/VBoxRestricoes"]
+layout_mode = 2
+
+[node name="lblFila" type="Label" parent="UI/VBoxRestricoes/HBoxFilaRestricoes"]
+layout_mode = 2
+text = "Fila:"
+
+[node name="lblFilaRestricoes" type="Label" parent="UI/VBoxRestricoes/HBoxFilaRestricoes"]
+layout_mode = 2
+text = "xxxxxxxxxxxx"
+
+[node name="HBoxDequeRestricoes" type="HBoxContainer" parent="UI/VBoxRestricoes"]
+layout_mode = 2
+
+[node name="lblDeque" type="Label" parent="UI/VBoxRestricoes/HBoxDequeRestricoes"]
+layout_mode = 2
+text = "Deque:"
+
+[node name="lblDequeRestricoes" type="Label" parent="UI/VBoxRestricoes/HBoxDequeRestricoes"]
+layout_mode = 2
+text = "xxxxxxxxxxxx"
+
+[node name="btnSair" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 30.0
+offset_right = 237.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0.611765, 0, 0, 1)
+text = "Sair"
+
+[node name="HBoxFila" type="HBoxContainer" parent="."]
+offset_left = -21.0
+offset_top = -129.0
+offset_right = 493.0
+offset_bottom = -89.0
+
+[node name="btnFila" type="Button" parent="HBoxFila"]
+layout_mode = 2
+text = "Fila      "
+
+[node name="btnAddFila" type="Button" parent="HBoxFila"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemFila" type="Button" parent="HBoxFila"]
+layout_mode = 2
+text = "-"
+
+[node name="lblFilaSlot1" type="Label" parent="HBoxFila"]
+layout_mode = 2
+text = "espaço 1"
+
+[node name="lblFilaSlot2" type="Label" parent="HBoxFila"]
+layout_mode = 2
+text = "espaço 2"
+
+[node name="lblFilaSlot3" type="Label" parent="HBoxFila"]
+layout_mode = 2
+text = "espaço 3"
+
+[node name="btnAddFilaFim" type="Button" parent="HBoxFila"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemFilaFim" type="Button" parent="HBoxFila"]
+layout_mode = 2
+text = "-"
+
+[node name="lblNivel" type="Label" parent="."]
+offset_left = 200.0
+offset_top = -476.0
+offset_right = 397.0
+offset_bottom = -393.0
+theme_override_font_sizes/font_size = 60
+text = "Nível 1"

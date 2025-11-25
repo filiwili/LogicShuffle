@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://b203deu2kjys5"]
+
+[ext_resource type="Script" uid="uid://br0x1j7si0ssb" path="res://sobre.gd" id="1_fctgm"]
+[ext_resource type="Texture2D" uid="uid://dxqs8xqijoq1y" path="res://bordertest.png" id="2_be46d"]
+[ext_resource type="Texture2D" uid="uid://58fta2xqqlw8" path="res://assets/cauaicon-removebg-preview.png" id="2_jn04o"]
+[ext_resource type="Texture2D" uid="uid://b1q1v27ehhnw8" path="res://assets/filipeicon-removebg-preview.png" id="3_be46d"]
+[ext_resource type="Texture2D" uid="uid://rwpsbgom5abk" path="res://arrow back.png" id="3_jmhkf"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fctgm")
+
+[node name="Bordertest" type="Sprite2D" parent="."]
+position = Vector2(576, 325)
+scale = Vector2(1.0729, 1.04026)
+texture = ExtResource("2_be46d")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 445.0
+offset_top = 35.0
+offset_right = 685.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 40
+text = "Sobre o Jogo"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 114.0
+offset_top = 156.0
+offset_right = 1041.0
+offset_bottom = 329.0
+bbcode_enabled = true
+text = "É um jogo "
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 490.0
+offset_top = 328.0
+offset_right = 676.0
+offset_bottom = 383.0
+theme_override_font_sizes/font_size = 40
+text = "Criadores"
+
+[node name="Cauaicon-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(736.5, 479)
+scale = Vector2(0.382, 0.348)
+texture = ExtResource("2_jn04o")
+
+[node name="Filipeicon-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(216.5, 478)
+scale = Vector2(0.354, 0.348)
+texture = ExtResource("3_be46d")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 345.0
+offset_top = 396.0
+offset_right = 532.0
+offset_bottom = 584.0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 863.5
+offset_top = 396.0
+offset_right = 1041.5
+offset_bottom = 557.0
+
+[node name="ArrowBack" type="TextureButton" parent="."]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 576.0
+offset_bottom = 544.0
+scale = Vector2(0.243164, 0.200195)
+texture_normal = ExtResource("3_jmhkf")

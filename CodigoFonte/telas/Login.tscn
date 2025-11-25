@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhymvjv7enm7w"]
+
+[ext_resource type="Script" uid="uid://po2qu5pyrvmi" path="res://login.gd" id="1_6uxbt"]
+[ext_resource type="Texture2D" uid="uid://bd61g6fiuwms8" path="res://minimal3.webp" id="2_8amdc"]
+[ext_resource type="Script" uid="uid://bnwckymgyx8ad" path="res://minimal_3.gd" id="3_6cq21"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 191.0
+offset_top = 206.0
+offset_right = 191.0
+offset_bottom = 206.0
+script = ExtResource("1_6uxbt")
+
+[node name="Minimal3" type="Sprite2D" parent="."]
+position = Vector2(385, 110)
+scale = Vector2(1.89352, 1.83882)
+texture = ExtResource("2_8amdc")
+script = ExtResource("3_6cq21")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "E-mail:                                 "
+
+[node name="LineEditEmail" type="LineEdit" parent="UI/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+placeholder_text = "Digite seu E-mail"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Senha:                                 "
+
+[node name="LineEditSenha" type="LineEdit" parent="UI/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+placeholder_text = "Insira Sua Senha"
+
+[node name="ButtonVerSenha" type="Button" parent="UI/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "👁"
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = -140.0
+offset_right = 621.0
+offset_bottom = -57.0
+theme_override_font_sizes/font_size = 60
+text = "Tela de Login"
+
+[node name="ButtonLogin" type="Button" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 240.0
+offset_right = 459.0
+offset_bottom = 331.0
+text = "ENTRAR"
+
+[node name="ButtonEsqueciSenha" type="Button" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 120.0
+offset_right = 240.0
+offset_bottom = 187.0
+text = "ESQUECI A SENHA"
+
+[node name="ButtonCadastro" type="Button" parent="."]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 127.0
+offset_right = 655.0
+offset_bottom = 194.0
+text = "FAZER CADASTRO"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="LabelMensagem" type="Label" parent="."]
+layout_mode = 0
+offset_left = -94.0
+offset_top = -144.0
+offset_right = -34.0
+offset_bottom = -121.0

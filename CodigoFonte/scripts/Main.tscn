@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=3 uid="uid://3cbfj11br60x"]
+
+[ext_resource type="Script" uid="uid://cwtwgawca5h4l" path="res://main.gd" id="1_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://bd61g6fiuwms8" path="res://minimal3.webp" id="1_fos0i"]
+[ext_resource type="Script" uid="uid://bnwckymgyx8ad" path="res://minimal_3.gd" id="2_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://b73r58had355g" path="res://trophy.png" id="2_r0du0"]
+[ext_resource type="Texture2D" uid="uid://cl2fn7tgg2awt" path="res://DALL·E 2025-03-23 21.13.36 - Crie um logotipo para um jogo de lógica baseado em estruturas de dados. O design deve ser moderno e minimalista, utilizando uma paleta de cores que va.webp" id="4_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://b5xgv40xlammc" path="res://cat.png" id="5_fos0i"]
+
+[sub_resource type="FontFile" id="FontFile_r0du0"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+cache/0/60/0/ascent = 0.0
+cache/0/60/0/descent = 0.0
+cache/0/60/0/underline_position = 0.0
+cache/0/60/0/underline_thickness = 0.0
+cache/0/60/0/scale = 1.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Minimal3" type="Sprite2D" parent="."]
+position = Vector2(576.5, 317)
+scale = Vector2(1.89352, 1.83882)
+texture = ExtResource("1_fos0i")
+script = ExtResource("2_3dxm6")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 244.0
+offset_top = 148.0
+offset_right = 284.0
+offset_bottom = 188.0
+script = ExtResource("1_3dxm6")
+
+[node name="MainContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 234.0
+offset_right = 610.0
+offset_bottom = 446.0
+
+[node name="Jogar" type="Button" parent="UI/MainContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.588235, 0.498039, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "JOGAR"
+
+[node name="Configuracoes" type="Button" parent="UI/MainContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.588235, 0.498039, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "CONFIGURAÇÕES"
+
+[node name="Sobre" type="Button" parent="UI/MainContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.588235, 0.498039, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "SOBRE O JOGO"
+
+[node name="Sair" type="Button" parent="UI/MainContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "SAIR"
+
+[node name="EditarPerfil2" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -84.0
+offset_top = 170.0
+offset_right = 7.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(0.480731, 0.610579, 0.845406, 1)
+text = "Editar Perfil"
+
+[node name="Ranking" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 173.0
+offset_right = 793.0
+offset_bottom = 196.0
+theme_override_colors/font_color = Color(0.482353, 0.611765, 0.847059, 1)
+text = "Ver Ranking"
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 99.0
+offset_right = 545.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0.637374, 0.361037, 0.0368243, 1)
+theme_override_fonts/font = SubResource("FontFile_r0du0")
+theme_override_font_sizes/font_size = 60
+text = "LOGIC SHUFFLE"
+
+[node name="Trophy" type="TextureButton" parent="UI"]
+layout_mode = 0
+offset_left = 653.0
+offset_top = 0.999985
+offset_right = 1793.0
+offset_bottom = 1027.0
+scale = Vector2(0.164062, 0.147124)
+texture_normal = ExtResource("2_r0du0")
+
+[node name="ProfilePicture" type="TextureButton" parent="UI"]
+layout_mode = 0
+offset_left = -140.0
+offset_top = 2.0
+offset_right = 220.0
+offset_bottom = 362.0
+scale = Vector2(0.75, 0.569444)
+texture_normal = ExtResource("5_fos0i")
+
+[node name="Dall·e2025-03-2321_13_36-CrieUmLogotipoParaUmJogoDeLógicaBaseadoEmEstruturasDeDados_ODesignDeveSerModernoEMinimalista,UtilizandoUmaPaletaDeCoresQueVa" type="Sprite2D" parent="."]
+position = Vector2(577, 151)
+scale = Vector2(0.300079, 0.183533)
+texture = ExtResource("4_cm0pq")
+
+[connection signal="pressed" from="UI/MainContainer/Jogar" to="UI" method="_on_jogar_pressed"]
+[connection signal="pressed" from="UI/MainContainer/Configuracoes" to="UI" method="_on_configuracoes_pressed"]
+[connection signal="pressed" from="UI/MainContainer/Configuracoes" to="UI" method="_on_configurações_pressed"]
+[connection signal="pressed" from="UI/MainContainer/Sobre" to="UI" method="_on_sobre_pressed"]
+[connection signal="pressed" from="UI/MainContainer/Sair" to="UI" method="_on_sair_pressed"]

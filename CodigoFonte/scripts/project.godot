@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Logic Shuffle"
+config/description="Um desafio que propõe aprender estruturas de dados de forma dinâmica. Topa este desafio?"
+config/version="1.0.0"
+run/main_scene="uid://dhymvjv7enm7w"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Global.gd"
+SessionManager="*res://SessionManager.gd"
+ProgressManager="*res://ProgressManager.gd"
+SettingsManager="*res://SettingsManager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://c080ew2h6psdr"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
+
+[dotnet]
+
+project/assembly_name="LogicShuffle"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

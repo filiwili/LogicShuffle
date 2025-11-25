@@ -1,0 +1,310 @@
+[gd_scene load_steps=4 format=3 uid="uid://mm2wfem7v06y"]
+
+[ext_resource type="Script" uid="uid://b6814t8imynjc" path="res://jogo_1_fase_1.gd" id="1_0ohki"]
+[ext_resource type="Texture2D" uid="uid://bd61g6fiuwms8" path="res://minimal3.webp" id="2_n4afw"]
+[ext_resource type="Script" uid="uid://bnwckymgyx8ad" path="res://minimal_3.gd" id="3_46t5s"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0ohki")
+
+[node name="Minimal3" type="Sprite2D" parent="."]
+position = Vector2(576.5, 317)
+scale = Vector2(1.89352, 1.83882)
+texture = ExtResource("2_n4afw")
+script = ExtResource("3_46t5s")
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 51.0
+offset_top = 35.0
+offset_right = 131.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.627451, 0.176471, 0.286275, 1)
+text = "Sair"
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="lblMensagem" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 164.0
+offset_right = 253.0
+offset_bottom = 187.0
+
+[node name="lblTempo" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 990.0
+offset_top = 13.0
+offset_right = 1030.0
+offset_bottom = 36.0
+
+[node name="lblPontuacao" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 987.0
+offset_top = 42.0
+offset_right = 1027.0
+offset_bottom = 65.0
+
+[node name="LineEditLetra" type="LineEdit" parent="UI"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 230.0
+offset_right = 328.563
+offset_bottom = 261.0
+
+[node name="btnVerificar" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 546.0
+offset_right = 683.0
+offset_bottom = 577.0
+text = "Verificar Resposta"
+
+[node name="HBoxDeque" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 279.0
+offset_right = 537.0
+offset_bottom = 354.0
+
+[node name="Deque" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Corredor Duplo (C.D)"
+
+[node name="btnRemBack" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "-"
+
+[node name="btnAddBack" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "+"
+
+[node name="lblDequeSlot1" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+
+[node name="lblDequeSlot2" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+
+[node name="lblDequeSlot3" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+
+[node name="lblDequeSlot4" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+
+[node name="lblDequeSlot5" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+
+[node name="lblDequeSlot6" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+
+[node name="lblDequeSlot7" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+
+[node name="lblDequeSlot8" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+
+[node name="btnAddFront" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemFront" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "-"
+
+[node name="btnToPilha" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "→F.i"
+
+[node name="btnToFila" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "→F"
+
+[node name="VBoxPilha" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 194.0
+offset_right = 993.0
+offset_bottom = 581.0
+
+[node name="lblPilhaSlot1" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="lblPilhaSlot2" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="lblPilhaSlot3" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="lblPilhaSlot4" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="lblPilhaSlot5" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="lblPilhaSlot6" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="lblPilhaSlot7" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="lblPilhaSlot8" type="Label" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="LineEditPilha" type="LineEdit" parent="UI/VBoxPilha"]
+layout_mode = 2
+
+[node name="btnAddPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "-"
+
+[node name="btnToDequeFromPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "→C.D"
+
+[node name="btnToFilaFromPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+text = "→F"
+
+[node name="HBoxFila" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 417.0
+offset_right = 412.0
+offset_bottom = 461.0
+
+[node name="Fila" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "Fila(F)"
+
+[node name="lblFilaSlot1" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="lblFilaSlot2" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="lblFilaSlot3" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="lblFilaSlot4" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="lblFilaSlot5" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="lblFilaSlot6" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="lblFilaSlot7" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="lblFilaSlot8" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="LineEditFila" type="LineEdit" parent="UI/HBoxFila"]
+layout_mode = 2
+
+[node name="btnAddFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "+"
+
+[node name="btnRemFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "-"
+
+[node name="btnToDequeFromFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "→C.D"
+
+[node name="btnToPilhaFromFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "→F.I"
+
+[node name="lblEdicaoDeque" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 201.0
+offset_right = 392.0
+offset_bottom = 224.0
+text = "Add Cliente C.D"
+
+[node name="btnHistoria" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 37.0
+offset_right = 962.0
+offset_bottom = 68.0
+text = "⚠️"
+
+[node name="lblEdicaoPilha" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 754.0
+offset_top = 413.0
+offset_right = 884.0
+offset_bottom = 436.0
+text = "Add Cliente F.I"
+
+[node name="lblEdicaoFila" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 383.0
+offset_right = 259.0
+offset_bottom = 406.0
+text = "Add Cliente F"
+
+[node name="lblNivel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 28.0
+offset_right = 565.0
+offset_bottom = 51.0
+text = "Nível 1"
+
+[node name="Pilha" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 861.0
+offset_top = 117.0
+offset_right = 998.0
+offset_bottom = 140.0
+text = "Fila Invertida (F.I) "
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" type="TextureRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_right = 1151.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupHistoria" type="Panel" parent="CanvasLayer"]
+offset_left = 235.0
+offset_top = 36.0
+offset_right = 956.0
+offset_bottom = 344.0
+
+[node name="lblTexto" type="RichTextLabel" parent="CanvasLayer/PopupHistoria"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 310.0
+text = "historinha dos santos balblabla"
+
+[node name="btnFechar" type="Button" parent="CanvasLayer/PopupHistoria"]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 2.0
+offset_right = 714.0
+offset_bottom = 33.0
+text = "❌Fechar"

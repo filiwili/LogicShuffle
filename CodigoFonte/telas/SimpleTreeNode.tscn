@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b522sit67bk8m"]
+
+[ext_resource type="Script" uid="uid://b3slui2wdkmuy" path="res://SimpleTreeNode.gd" id="1_cbgyb"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cbgyb")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyvy8ij6s7t0e"]
+
+[ext_resource type="Script" uid="uid://8qm87lrw8qwa" path="res://tree_node_1.gd" id="1_j2vwr"]
+
+[node name="TreeNode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j2vwr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.396889, 0.396889, 0.396889, 1)
+
+[node name="ValueLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SelectionHighlight" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.151276, 0.151276, 0.151276, 1)

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dhtm366iwt4p0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 194.0
+offset_top = 71.0
+offset_right = 976.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 60
+text = "Minigame Pilha/Fila/Deque"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 207.0
+offset_top = 261.0
+offset_right = 551.0
+offset_bottom = 316.0
+theme_override_font_sizes/font_size = 40
+text = "Nível 1 Incompleto!"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 236.0
+offset_top = 487.0
+offset_right = 516.0
+offset_bottom = 565.0
+theme_override_font_sizes/font_size = 30
+text = "Tentar Novamente"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 632.0
+offset_top = 498.0
+offset_right = 759.0
+offset_bottom = 568.0
+theme_override_colors/font_color = Color(0.611765, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Sair"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 209.0
+offset_top = 330.0
+offset_right = 370.0
+offset_bottom = 372.0
+theme_override_colors/font_color = Color(0.461857, 0.294854, 0.262153, 1)
+theme_override_colors/font_shadow_color = Color(0.471119, 0.0522255, 0.323507, 1)
+theme_override_font_sizes/font_size = 30
+text = "Não foi dessa vez! :("

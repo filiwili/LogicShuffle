@@ -1,0 +1,367 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4b63k60lnjl8"]
+
+[ext_resource type="Script" uid="uid://cf71sqcw00n5n" path="res://jogo_1_fase_5.gd" id="1_8gqbg"]
+[ext_resource type="Texture2D" uid="uid://bd61g6fiuwms8" path="res://minimal3.webp" id="2_pvexj"]
+[ext_resource type="Script" uid="uid://bnwckymgyx8ad" path="res://minimal_3.gd" id="3_lbx1e"]
+[ext_resource type="Texture2D" uid="uid://bnfmdudy1kpyp" path="res://assets/caveman.png" id="4_o7fh7"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8gqbg")
+
+[node name="Minimal3" type="Sprite2D" parent="."]
+position = Vector2(576.5, 317)
+scale = Vector2(1.89352, 1.83882)
+texture = ExtResource("2_pvexj")
+script = ExtResource("3_lbx1e")
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 51.0
+offset_top = 35.0
+offset_right = 131.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.627451, 0.176471, 0.286275, 1)
+text = "Sair"
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="lblMensagem" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 164.0
+offset_right = 253.0
+offset_bottom = 187.0
+
+[node name="lblTempo" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 717.0
+offset_top = 28.0
+offset_right = 771.0
+offset_bottom = 51.0
+text = "Tempo"
+
+[node name="lblPontuacao" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 54.0
+offset_right = 773.0
+offset_bottom = 77.0
+text = "Pontos"
+
+[node name="btnVerificar" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 527.0
+offset_right = 648.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(0.454902, 0.639216, 0.768627, 1)
+theme_override_font_sizes/font_size = 30
+text = "Enviar Solução"
+
+[node name="HBoxDeque" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 199.0
+offset_right = 739.0
+offset_bottom = 274.0
+
+[node name="Deque" type="Label" parent="UI/HBoxDeque"]
+layout_mode = 2
+text = "Galeria
+Dupla (G.D)"
+
+[node name="btnRemBack" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "-"
+
+[node name="btnAddBack" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "+"
+
+[node name="SlotDeque1" type="TextureRect" parent="UI/HBoxDeque"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotDeque2" type="TextureRect" parent="UI/HBoxDeque"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotDeque3" type="TextureRect" parent="UI/HBoxDeque"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotDeque4" type="TextureRect" parent="UI/HBoxDeque"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotDeque5" type="TextureRect" parent="UI/HBoxDeque"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="btnAddFront" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "+"
+
+[node name="btnRemFront" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "-"
+
+[node name="btnToPilha" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "→T.I"
+
+[node name="btnToFila" type="Button" parent="UI/HBoxDeque"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "→T.L"
+
+[node name="VBoxPilha" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 49.0
+offset_right = 1116.0
+offset_bottom = 537.0
+
+[node name="SlotPilha1" type="TextureRect" parent="UI/VBoxPilha"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotPilha2" type="TextureRect" parent="UI/VBoxPilha"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotPilha3" type="TextureRect" parent="UI/VBoxPilha"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotPilha4" type="TextureRect" parent="UI/VBoxPilha"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotPilha5" type="TextureRect" parent="UI/VBoxPilha"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="btnAddPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[node name="btnRemPilha" type="Button" parent="UI/VBoxPilha"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "-"
+
+[node name="HBoxFila" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 326.0
+offset_right = 585.0
+offset_bottom = 403.0
+
+[node name="Fila" type="Label" parent="UI/HBoxFila"]
+layout_mode = 2
+text = "Túnel
+Linear(T.L)"
+
+[node name="SlotFila1" type="TextureRect" parent="UI/HBoxFila"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotFila2" type="TextureRect" parent="UI/HBoxFila"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotFila3" type="TextureRect" parent="UI/HBoxFila"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotFila4" type="TextureRect" parent="UI/HBoxFila"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SlotFila5" type="TextureRect" parent="UI/HBoxFila"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="btnAddFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "+"
+
+[node name="btnRemFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "-"
+
+[node name="btnToDequeFromFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+disabled = true
+text = "→G.D"
+
+[node name="btnToPilhaFromFila" type="Button" parent="UI/HBoxFila"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+disabled = true
+text = "→T.I"
+
+[node name="btnHistoria" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 37.0
+offset_right = 962.0
+offset_bottom = 68.0
+text = "⚠️"
+
+[node name="lblNivel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 28.0
+offset_right = 565.0
+offset_bottom = 51.0
+text = "Nível 5"
+
+[node name="Pilha" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 974.0
+offset_top = 25.0
+offset_right = 1129.0
+offset_bottom = 48.0
+text = "Túnel Invertido (T.I) "
+
+[node name="btnToDequeFromPilha" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 908.0
+offset_top = 488.0
+offset_right = 1011.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 35
+text = "→G.D"
+
+[node name="btnToFilaFromPilha" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 908.0
+offset_top = 549.0
+offset_right = 1011.0
+offset_bottom = 606.0
+theme_override_font_sizes/font_size = 35
+disabled = true
+text = "→T.L"
+
+[node name="SistemaSelecaoElementos" type="CanvasLayer" parent="."]
+
+[node name="PopupSelecao" type="Window" parent="SistemaSelecaoElementos"]
+position = Vector2i(0, 36)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SistemaSelecaoElementos/PopupSelecao"]
+offset_top = -6.0
+offset_right = 158.0
+offset_bottom = 65.0
+
+[node name="GridContainer" type="GridContainer" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="btnElementoE" type="TextureButton" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="btnElementoA" type="TextureButton" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="btnElementoB" type="TextureButton" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="btnElementoC" type="TextureButton" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="btnElementoD" type="TextureButton" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="btnElementoF" type="TextureButton" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="btnElementoG" type="TextureButton" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer"]
+layout_mode = 2
+text = "Selecionar Elemento"
+
+[node name="btnCancelar" type="Button" parent="SistemaSelecaoElementos/PopupSelecao/VBoxContainer"]
+layout_mode = 2
+text = "Cancelar"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PopupHistoria" type="Panel" parent="CanvasLayer"]
+offset_left = 235.0
+offset_top = 36.0
+offset_right = 956.0
+offset_bottom = 344.0
+
+[node name="lblTexto" type="RichTextLabel" parent="CanvasLayer/PopupHistoria"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 310.0
+text = "historinha dos santos balblabla"
+
+[node name="btnFechar" type="Button" parent="CanvasLayer/PopupHistoria"]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 2.0
+offset_right = 714.0
+offset_bottom = 33.0
+text = "❌Fechar"
+
+[node name="Overlay" type="TextureRect" parent="CanvasLayer"]
+offset_left = 222.0
+offset_top = 353.0
+offset_right = 859.0
+offset_bottom = 626.0
+texture = ExtResource("4_o7fh7")
