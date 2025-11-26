@@ -110,7 +110,6 @@ Versão standalone independente, ideal para demonstrações e uso em ambientes a
 ## Configuração Completa (Versão Online)
 
 ### Pré-requisitos
-- **Mesma que as da versão offline com acréscimos:**
 - **Python** 3.8 ou superior
 - **PostgreSQL** 12 ou superior  
 - **Godot Engine** 4.0 ou superior (apenas para modificações no front-end)
