@@ -270,16 +270,16 @@ def save_score():
         # Buscar usuário
         user = User.query.get(user_id)
         if not user:
-            print("❌ Usuário não encontrado")
+            print(" Usuário não encontrado")
             return jsonify({"msg": "Usuário não encontrado"}), 404
         
         # Determinar qual jogo baseado no nome do level
         game_id = '1'  # Jogo padrão (Jogo1)
         if 'arvore_binaria' in level:
             game_id = '2'  # Jogo das Árvores Binárias
-            print(f"🎯 Identificado como Jogo 2 (Árvores Binárias)")
+            print(f" Identificado como Jogo 2 (Árvores Binárias)")
         else:
-            print(f"🎯 Identificado como Jogo 1 (Estruturas de Dados)")
+            print(f" Identificado como Jogo 1 (Estruturas de Dados)")
         
         # Verificar se o nível existe
         level_data = db.session.execute(
@@ -288,11 +288,11 @@ def save_score():
         ).fetchone()
         
         if not level_data:
-            print(f"❌ Nível {level} não encontrado para o jogo {game_id}")
+            print(f" Nível {level} não encontrado para o jogo {game_id}")
             return jsonify({"msg": f"Nível {level} não encontrado"}), 400
         
         level_id = level_data[0]
-        print(f"✅ Nível encontrado: {level} -> ID: {level_id} para jogo {game_id}")
+        print(f" Nível encontrado: {level} -> ID: {level_id} para jogo {game_id}")
         
         # Verificar se já existe uma pontuação
         existing_score = db.session.execute(
@@ -306,10 +306,10 @@ def save_score():
         ).fetchone()
         
         if existing_score:
-            print(f"⚠️  Pontuação já existe para nível {level} do jogo {game_id}")
+            print(f"  Pontuação já existe para nível {level} do jogo {game_id}")
             return jsonify({"msg": "Pontuação da primeira conclusão já existe"}), 200
         
-        print("✅ Primeira conclusão - processando...")
+        print(" Primeira conclusão - processando...")
         
         # Buscar ou criar user_games
         user_game = db.session.execute(
@@ -319,7 +319,7 @@ def save_score():
         
         if not user_game:
             user_game_id = str(uuid.uuid4())
-            print(f"✅ Criando novo user_games: {user_game_id} para jogo {game_id}")
+            print(f" Criando novo user_games: {user_game_id} para jogo {game_id}")
             db.session.execute(
                 text("""
                     INSERT INTO user_games (id, user_id, game_id, progress)
@@ -329,7 +329,7 @@ def save_score():
             )
         else:
             user_game_id = user_game[0]
-            print(f"✅ User_games encontrado: {user_game_id} para jogo {game_id}")
+            print(f" User_games encontrado: {user_game_id} para jogo {game_id}")
             # Atualizar progresso
             db.session.execute(
                 text("UPDATE user_games SET progress = progress + 1 WHERE id = :user_game_id"),
@@ -337,7 +337,7 @@ def save_score():
             )
         
         # Inserir pontuação
-        print(f"✅ Inserindo pontuação no user_game_levels para jogo {game_id}")
+        print(f" Inserindo pontuação no user_game_levels para jogo {game_id}")
         db.session.execute(
             text("""
                 INSERT INTO user_game_levels (id, user_game_id, level_id, score)
@@ -363,14 +363,14 @@ def save_score():
         ).fetchone()
         
         user.score = total_score_result[0] or 0
-        print(f"✅ Score total atualizado: {user.score}")
+        print(f" Score total atualizado: {user.score}")
         
         db.session.commit()
-        print("✅ Pontuação salva com sucesso no banco de dados!")
+        print(" Pontuação salva com sucesso no banco de dados!")
         return jsonify({"msg": "Pontuação salva com sucesso", "total_score": user.score}), 200
         
     except Exception as e:
-        print(f"❌ ERRO CRÍTICO ao salvar pontuação: {str(e)}")
+        print(f" ERRO CRÍTICO ao salvar pontuação: {str(e)}")
         print(f"🔍 Traceback completo:")
         traceback.print_exc()
         db.session.rollback()
@@ -439,8 +439,7 @@ def get_global_ranking():
         
         print(f"📊 Carregando ranking global para usuário: {user_id}")
         
-        # Buscar top 5 do ranking global INCLUINDO FOTOS DE PERFIL
-        # AGORA CONSIDERANDO TODOS OS JOGOS
+        # Buscar top 5 do ranking + INCLUINDO FOTOS DE PERFIL
         top_ranking = db.session.execute(
             text("""
                 SELECT 
@@ -472,7 +471,7 @@ def get_global_ranking():
         
         print(f"📊 Top ranking encontrado: {len(ranking_data)} jogadores")
         
-        # Buscar posição do usuário atual INCLUINDO FOTO
+        # Buscar posição do usuário atual + FOTO
         user_ranking = db.session.execute(
             text("""
                 WITH ranked_users AS (
@@ -508,9 +507,9 @@ def get_global_ranking():
                 "position": int(user_ranking[5]) if user_ranking[5] else 0,
                 "total_players": int(total_players)
             }
-            print(f"📊 Usuário no ranking: posição {user_ranking[5]}")
+            print(f" Usuário no ranking: posição {user_ranking[5]}")
         else:
-            print("⚠️  Usuário não encontrado no ranking")
+            print("  Usuário não encontrado no ranking")
             # Se usuário não está no ranking, buscar dados básicos
             user = User.query.get(user_id)
             if user:
@@ -522,7 +521,7 @@ def get_global_ranking():
                     "position": int(total_players) + 1,
                     "total_players": int(total_players)
                 }
-                print(f"📊 Usuário sem pontuação: posição {total_players + 1}")
+                print(f" Usuário sem pontuação: posição {total_players + 1}")
         
         return jsonify({
             "top_ranking": ranking_data,
@@ -530,7 +529,7 @@ def get_global_ranking():
         }), 200
         
     except Exception as e:
-        print(f"❌ Erro ao carregar ranking global: {str(e)}")
+        print(f" Erro ao carregar ranking global: {str(e)}")
         traceback.print_exc()
         return jsonify({"msg": "Erro ao carregar ranking global"}), 500
 
@@ -543,7 +542,6 @@ def get_ranking():
         
         print(f"Carregando ranking para nível: {level}, usuário: {user_id}")
         
-        # CORREÇÃO: Removido o campo time da consulta também
         top_ranking = db.session.execute(
             text("""
                 SELECT 
@@ -631,17 +629,17 @@ def get_user_progress():
         # VERIFICAR SE O USUÁRIO EXISTE
         user = User.query.get(user_id)
         if not user:
-            print(f"❌ DEBUG: Usuário {user_id} NÃO ENCONTRADO na tabela users!")
+            print(f" DEBUG: Usuário {user_id} NÃO ENCONTRADO na tabela users!")
             return jsonify({"msg": "Usuário não encontrado"}), 404
         
-        print(f"✅ DEBUG: Usuário encontrado: {user.username} (ID: {user.id})")
+        print(f" DEBUG: Usuário encontrado: {user.username} (ID: {user.id})")
         
         # VERIFICAR QUANTOS NÍVEIS EXISTEM NO BANCO
         total_levels_in_db = db.session.execute(
             text("SELECT COUNT(*) FROM game_levels WHERE game_id = :game_id"),
             {"game_id": game_id}
         ).fetchone()[0]
-        print(f"🔍 Níveis no banco para jogo {game_id}: {total_levels_in_db}")
+        print(f"🔍Níveis no banco para jogo {game_id}: {total_levels_in_db}")
         
         # VERIFICAR SE EXISTEM user_games PARA ESTE USUÁRIO
         user_games_count = db.session.execute(
@@ -649,7 +647,7 @@ def get_user_progress():
             {"user_id": user_id, "game_id": game_id}
         ).fetchone()[0]
         
-        print(f"🔍 DEBUG: User_games encontrados para usuário {user_id} no jogo {game_id}: {user_games_count}")
+        print(f" DEBUG: User_games encontrados para usuário {user_id} no jogo {game_id}: {user_games_count}")
         
         # VERIFICAR SE EXISTEM user_game_levels PARA ESTE USUÁRIO
         user_levels_count = db.session.execute(
@@ -661,7 +659,7 @@ def get_user_progress():
             {"user_id": user_id, "game_id": game_id}
         ).fetchone()[0]
         
-        print(f"🔍 DEBUG: User_game_levels encontrados para usuário {user_id} no jogo {game_id}: {user_levels_count}")
+        print(f" DEBUG: User_game_levels encontrados para usuário {user_id} no jogo {game_id}: {user_levels_count}")
         
         # Buscar todos os níveis do jogo
         levels = db.session.execute(
@@ -674,10 +672,10 @@ def get_user_progress():
             {"game_id": game_id}
         ).fetchall()
         
-        print(f"✅ Níveis encontrados na query: {len(levels)} para jogo {game_id}")
+        print(f" Níveis encontrados na query: {len(levels)} para jogo {game_id}")
         
         if total_levels_in_db != len(levels):
-            print(f"❌ INCONSISTÊNCIA: Banco tem {total_levels_in_db} níveis, mas query retornou {len(levels)}")
+            print(f" INCONSISTÊNCIA: Banco tem {total_levels_in_db} níveis, mas query retornou {len(levels)}")
         
         # CORREÇÃO CRÍTICA: Buscar apenas níveis concluídos por ESTE usuário específico
         completed_levels = db.session.execute(
@@ -694,7 +692,7 @@ def get_user_progress():
             {"user_id": user_id, "game_id": game_id}
         ).fetchall()
         
-        print(f"✅ Níveis concluídos encontrados para usuário {user_id}: {len(completed_levels)}")
+        print(f" Níveis concluídos encontrados para usuário {user_id}: {len(completed_levels)}")
         
         # Se for um novo usuário (sem user_games), garantir que retornamos progresso vazio
         if user_games_count == 0:
@@ -724,8 +722,8 @@ def get_user_progress():
                 "levels": levels_data
             }
             
-            print(f"🆕 Progresso para NOVO usuário: 0/{len(levels)} níveis concluídos")
-            print(f"🆕 Níveis desbloqueados: {[level['name'] for level in levels_data if level['unlocked']]}")
+            print(f" Progresso para NOVO usuário: 0/{len(levels)} níveis concluídos")
+            print(f" Níveis desbloqueados: {[level['name'] for level in levels_data if level['unlocked']]}")
             return jsonify(progress_data), 200
         
         # Criar mapa de níveis concluídos
@@ -741,9 +739,8 @@ def get_user_progress():
             if level[1] > max_completed_order:
                 max_completed_order = level[1]
         
-        print(f"🔍 Ordem máxima concluída: {max_completed_order}")
+        print(f" Ordem máxima concluída: {max_completed_order}")
         
-        # ✅ CORREÇÃO CRÍTICA: Lógica melhorada para próximo nível
         if max_completed_order == 0:
             # Nenhum nível concluído - próximo é o primeiro
             next_level = levels[0][1] if levels else None
@@ -763,7 +760,7 @@ def get_user_progress():
             level_name = level[1]
             is_completed = level_name in completed_map
             
-            # ✅ CORREÇÃO CRÍTICA: Lógica simples e correta de desbloqueio
+
             # Um nível está desbloqueado se:
             # 1. É o primeiro nível (order_number == 1)
             # 2. Já foi concluído
@@ -790,7 +787,7 @@ def get_user_progress():
             "levels": levels_data
         }
         
-        print(f"✅ Progresso final para usuário {user_id}:")
+        print(f" Progresso final para usuário {user_id}:")
         print(f"   - Total de níveis: {len(levels)}")
         print(f"   - Níveis concluídos: {len(completed_levels)}")
         print(f"   - Próximo nível: {next_level}")
@@ -800,7 +797,7 @@ def get_user_progress():
         return jsonify(progress_data), 200
         
     except Exception as e:
-        print(f"❌ ERRO CRÍTICO ao buscar progresso: {str(e)}")
+        print(f" ERRO CRÍTICO ao buscar progresso: {str(e)}")
         traceback.print_exc()
         return jsonify({"msg": "Erro interno ao buscar progresso", "error": str(e)}), 500
     
@@ -815,7 +812,7 @@ def check_level_access():
         if not level_name:
             return jsonify({"msg": "level_name é obrigatório"}), 400
         
-        print(f"🔒 Verificando acesso ao nível {level_name} para usuário {user_id}")
+        print(f" Verificando acesso ao nível {level_name} para usuário {user_id}")
         
         # Buscar informações do nível solicitado
         target_level = db.session.execute(
@@ -874,11 +871,11 @@ def check_level_access():
         if not access_granted:
             response_data["reason"] = f"Complete o nível {previous_level[0]} primeiro"
         
-        print(f"🔒 Acesso ao nível {level_name}: {access_granted}")
+        print(f" Acesso ao nível {level_name}: {access_granted}")
         return jsonify(response_data), 200
         
     except Exception as e:
-        print(f"❌ Erro ao verificar acesso: {str(e)}")
+        print(f" Erro ao verificar acesso: {str(e)}")
         return jsonify({"msg": "Erro ao verificar acesso"}), 500
 
 # --- Health Check ---
@@ -917,7 +914,7 @@ def get_user_settings():
                 "fx_volume": float(user_settings[1]) if user_settings[1] is not None else 1.0,
                 "fullscreen": bool(user_settings[2]) if user_settings[2] is not None else True
             }
-            print(f"✅ Configurações encontradas: {settings_data}")
+            print(f" Configurações encontradas: {settings_data}")
             return jsonify(settings_data), 200
         else:
             # Retornar configurações padrão se não existirem
@@ -926,11 +923,11 @@ def get_user_settings():
                 "fx_volume": 1.0,
                 "fullscreen": True
             }
-            print(f"⚠️  Nenhuma configuração encontrada, usando padrão: {default_settings}")
+            print(f"  Nenhuma configuração encontrada, usando padrão: {default_settings}")
             return jsonify(default_settings), 200
             
     except Exception as e:
-        print(f"❌ Erro ao buscar configurações: {str(e)}")
+        print(f" Erro ao buscar configurações: {str(e)}")
         return jsonify({"msg": "Erro ao buscar configurações"}), 500
 
 @app.route('/user-settings', methods=['POST'])
@@ -940,8 +937,8 @@ def save_user_settings():
         user_id = get_jwt_identity()
         data = request.get_json()
         
-        print(f"💾 Salvando configurações para usuário: {user_id}")
-        print(f"📊 Dados recebidos: {data}")
+        print(f" Salvando configurações para usuário: {user_id}")
+        print(f" Dados recebidos: {data}")
         
         master_volume = data.get('master_volume', 1.0)
         fx_volume = data.get('fx_volume', 1.0)
@@ -970,7 +967,7 @@ def save_user_settings():
                     "user_id": user_id
                 }
             )
-            print("✅ Configurações atualizadas")
+            print(" Configurações atualizadas")
         else:
             # Inserir novas configurações
             db.session.execute(
@@ -986,13 +983,13 @@ def save_user_settings():
                     "fullscreen": fullscreen
                 }
             )
-            print("✅ Configurações inseridas")
+            print(" Configurações inseridas")
         
         db.session.commit()
         return jsonify({"msg": "Configurações salvas com sucesso"}), 200
         
     except Exception as e:
-        print(f"❌ Erro ao salvar configurações: {str(e)}")
+        print(f" Erro ao salvar configurações: {str(e)}")
         db.session.rollback()
         return jsonify({"msg": "Erro ao salvar configurações"}), 500
 
@@ -1019,13 +1016,13 @@ def reset_user_settings():
             "fullscreen": True
         }
         
-        print("✅ Configurações resetadas para padrão")
+        print(" Configurações resetadas para padrão")
         return jsonify({
             "msg": "Configurações resetadas para padrão",
             "default_settings": default_settings
         }), 200
         
     except Exception as e:
-        print(f"❌ Erro ao resetar configurações: {str(e)}")
+        print(f" Erro ao resetar configurações: {str(e)}")
         db.session.rollback()
         return jsonify({"msg": "Erro ao resetar configurações"}), 500
