@@ -16,7 +16,7 @@ signal server_status_changed(available: bool)
 signal progress_saved(level_name: String, score: int)
 
 func _ready():
-	print("🚀 ProgressManager inicializado como autoload")
+	print(" ProgressManager inicializado como autoload")
 	
 	# CORREÇÃO: Esperar o SessionManager estar pronto antes de conectar
 	call_deferred("_initialize")
@@ -27,9 +27,9 @@ func _initialize():
 		SessionManager.user_changed.connect(_on_user_changed)
 		SessionManager.login_successful.connect(_on_user_logged_in)
 		SessionManager.logout_successful.connect(_on_user_logged_out)
-		print("✅ Conectado ao SessionManager")
+		print(" Conectado ao SessionManager")
 	else:
-		print("❌ SessionManager não encontrado")
+		print(" SessionManager não encontrado")
 	
 	# CORREÇÃO: Forçar limpeza inicial
 	force_clear_cache()
@@ -37,7 +37,7 @@ func _initialize():
 
 # CORREÇÃO: Nova função para quando usuário faz login
 func _on_user_logged_in():
-	print("🔑 Usuário fez login - carregando progresso")
+	print(" Usuário fez login - carregando progresso")
 	current_user_id = SessionManager.user_id
 	# Carregar progresso para ambos os jogos
 	load_user_progress("1")
@@ -45,8 +45,8 @@ func _on_user_logged_in():
 
 # Quando o usuário muda, limpar todo o cache
 func _on_user_changed():
-	print("🔄 Usuário mudou - LIMPEZA COMPLETA de cache de progresso")
-	print("📊 Cache antes da limpeza:")
+	print(" Usuário mudou - LIMPEZA COMPLETA de cache de progresso")
+	print(" Cache antes da limpeza:")
 	print("   - user_progress: ", user_progress.size())
 	print("   - levels_unlocked: ", levels_unlocked.size())
 	print("   - current_user_id: ", current_user_id)
@@ -58,12 +58,12 @@ func _on_user_changed():
 	
 	# CORREÇÃO: Forçar coleta de lixo se disponível
 	if Engine.has_method("get_memory_info"):
-		print("🗑️  Forçando coleta de lixo...")
+		print("  Forçando coleta de lixo...")
 		# Em Godot 4, podemos tentar liberar memória
 		OS.low_processor_usage_mode = true
 	
-	print("🧹 Cache limpo para novo usuário: ", current_user_id)
-	print("📊 Cache após limpeza:")
+	print(" Cache limpo para novo usuário: ", current_user_id)
+	print(" Cache após limpeza:")
 	print("   - user_progress: ", user_progress.size())
 	print("   - levels_unlocked: ", levels_unlocked.size())
 
@@ -82,7 +82,7 @@ func _check_server_status():
 		
 		if server_available != server_was_available:
 			server_status_changed.emit(server_available)
-			print("🔧 Status do servidor: ", "✅ Disponível" if server_available else "❌ Indisponível")
+			print("🔧 Status do servidor: ", " Disponível" if server_available else " Indisponível")
 	)
 	
 	var error = http_request.request("http://127.0.0.1:5000/health", [], HTTPClient.METHOD_GET)
@@ -91,15 +91,15 @@ func _check_server_status():
 		http_request.queue_free()
 		if server_available != server_was_available:
 			server_status_changed.emit(server_available)
-			print("🔧 Status do servidor: ❌ Indisponível (erro na requisição)")
+			print("🔧 Status do servidor:  Indisponível (erro na requisição)")
 
 # Carregar progresso do usuário para um jogo específico
 func load_user_progress(game_id: String = "1"):
-	print("📥 Carregando progresso do usuário para jogo: ", game_id)
+	print(" Carregando progresso do usuário para jogo: ", game_id)
 	
 	# CORREÇÃO: Verificar se o usuário está autenticado
 	if not SessionManager or not SessionManager.is_authenticated():
-		print("❌ Usuário não autenticado - não é possível carregar progresso")
+		print(" Usuário não autenticado - não é possível carregar progresso")
 		_ensure_basic_progress(game_id)
 		return
 	
@@ -108,7 +108,7 @@ func load_user_progress(game_id: String = "1"):
 	
 	# Se servidor não está disponível, usar fallback básico
 	if not server_available:
-		print("⚠️  Servidor indisponível, usando progresso básico")
+		print("  Servidor indisponível, usando progresso básico")
 		_ensure_basic_progress(game_id)
 		return
 	
@@ -121,7 +121,7 @@ func load_user_progress(game_id: String = "1"):
 	
 	var error = http_request.request(url, headers, HTTPClient.METHOD_GET)
 	if error != OK:
-		print("❌ Erro ao solicitar progresso do usuário")
+		print(" Erro ao solicitar progresso do usuário")
 		http_request.queue_free()
 		_ensure_basic_progress(game_id)
 
@@ -135,7 +135,7 @@ func _on_progress_loaded(result: int, response_code: int, headers: PackedStringA
 		if parse_result == OK:
 			var response = json.get_data()
 			
-			# ✅ CORREÇÃO CRÍTICA: Debug detalhado da resposta
+			# CORREÇÃO CRÍTICA: Debug detalhado da resposta
 			print("📥 RESPOSTA CRUA DO BACKEND PARA JOGO ", game_id, ":")
 			print("   - total_levels: ", response.get("total_levels", "NÃO ENCONTRADO"))
 			print("   - completed_levels: ", response.get("completed_levels", "NÃO ENCONTRADO"))
@@ -144,7 +144,7 @@ func _on_progress_loaded(result: int, response_code: int, headers: PackedStringA
 			user_progress[game_id] = response
 			levels_unlocked[game_id] = []
 			
-			# ✅ CORREÇÃO CRÍTICA: Coletar níveis desbloqueados de forma mais robusta
+			#  CORREÇÃO CRÍTICA: Coletar níveis desbloqueados de forma mais robusta
 			var levels_array = response.get("levels", [])
 			print("   - Níveis recebidos do backend: ", levels_array.size())
 			
@@ -155,9 +155,9 @@ func _on_progress_loaded(result: int, response_code: int, headers: PackedStringA
 					" - unlocked: ", level_data.get("unlocked", false),
 					" - completed: ", level_data.get("completed", false))
 			
-			# ✅ CORREÇÃO CRÍTICA: Se o backend retornou menos de 10 níveis, completar com os faltantes
+			#  CORREÇÃO CRÍTICA: Se o backend retornou menos de 10 níveis, completar com os faltantes
 			if levels_array.size() < 10:
-				print("⚠️  BACKEND RETORNOU APENAS ", levels_array.size(), " NÍVEIS! COMPLETANDO COM NÍVEIS FALTANTES...")
+				print("  BACKEND RETORNOU APENAS ", levels_array.size(), " NÍVEIS! COMPLETANDO COM NÍVEIS FALTANTES...")
 				_completar_niveis_faltantes(game_id, levels_array, response)
 			
 			# Coletar níveis desbloqueados para este jogo
@@ -167,32 +167,32 @@ func _on_progress_loaded(result: int, response_code: int, headers: PackedStringA
 					if level_name and not level_name in levels_unlocked[game_id]:
 						levels_unlocked[game_id].append(level_name)
 			
-			# ✅ CORREÇÃO CRÍTICA: Garantir que o próximo nível após o último concluído esteja desbloqueado
+			#  CORREÇÃO CRÍTICA: Garantir que o próximo nível após o último concluído esteja desbloqueado
 			_desbloquear_proximo_nivel_automaticamente(game_id)
 			
-			print("✅ Progresso carregado para jogo ", game_id)
-			print("🎯 Níveis desbloqueados: ", levels_unlocked[game_id])
-			print("📊 Níveis concluídos: ", response.get("completed_levels", 0), "/10")  # ✅ SEMPRE 10 níveis
+			print(" Progresso carregado para jogo ", game_id)
+			print(" Níveis desbloqueados: ", levels_unlocked[game_id])
+			print(" Níveis concluídos: ", response.get("completed_levels", 0), "/10")  #  SEMPRE 10 níveis
 			
 			progress_loaded.emit(game_id)
 		else:
-			print("❌ Erro ao fazer parse do JSON de progresso")
+			print(" Erro ao fazer parse do JSON de progresso")
 			print("   Body: ", body.get_string_from_utf8())
 			_setup_empty_progress(game_id)
 	else:
-		print("❌ Falha ao carregar progresso - Código: ", response_code)
+		print(" Falha ao carregar progresso - Código: ", response_code)
 		print("   Body: ", body.get_string_from_utf8())
 		_setup_empty_progress(game_id)
 
 # CORREÇÃO: Nova função para configurar progresso vazio sem dados falsos
 func _setup_empty_progress(game_id: String):
-	print("🔄 Configurando progresso vazio para jogo: ", game_id)
+	print(" Configurando progresso vazio para jogo: ", game_id)
 	
 	# Apenas garantir que as estruturas existem, mas vazias
 	if not user_progress.has(game_id):
 		user_progress[game_id] = {
 			"game_id": game_id,
-			"total_levels": 10,  # ✅ CORREÇÃO: Sempre 10 níveis
+			"total_levels": 10,  #  CORREÇÃO: Sempre 10 níveis
 			"completed_levels": 0,
 			"next_level": "nivel1" if game_id == "1" else "arvore_binaria_nivel1",
 			"levels": []  # ← Lista vazia de níveis
@@ -201,7 +201,7 @@ func _setup_empty_progress(game_id: String):
 	if not levels_unlocked.has(game_id):
 		levels_unlocked[game_id] = []
 	
-	# ✅ CORREÇÃO: Apenas o primeiro nível deve estar desbloqueado
+	#  CORREÇÃO: Apenas o primeiro nível deve estar desbloqueado
 	var first_level = "nivel1" if game_id == "1" else "arvore_binaria_nivel1"
 	if not first_level in levels_unlocked[game_id]:
 		levels_unlocked[game_id].append(first_level)
@@ -216,7 +216,7 @@ func _ensure_basic_progress(game_id: String):
 	if not user_progress.has(game_id):
 		user_progress[game_id] = {
 			"game_id": game_id,
-			"total_levels": 10,  # ✅ CORREÇÃO: Sempre 10 níveis
+			"total_levels": 10,  #  CORREÇÃO: Sempre 10 níveis
 			"completed_levels": 0,
 			"next_level": "nivel1" if game_id == "1" else "arvore_binaria_nivel1",
 			"levels": []
@@ -229,7 +229,7 @@ func _ensure_basic_progress(game_id: String):
 	var first_level = "nivel1" if game_id == "1" else "arvore_binaria_nivel1"
 	if not first_level in levels_unlocked[game_id]:
 		levels_unlocked[game_id].append(first_level)
-		print("✅ Primeiro nível garantido: ", first_level)
+		print(" Primeiro nível garantido: ", first_level)
 	
 	progress_loaded.emit(game_id)
 
@@ -239,21 +239,21 @@ func has_access_to_level(level_name: String, game_id: String) -> bool:
 	
 	# Primeiro nível sempre disponível
 	if level_name == "nivel1" or level_name == "arvore_binaria_nivel1":
-		print("✅ Primeiro nível sempre disponível: ", level_name)
+		print(" Primeiro nível sempre disponível: ", level_name)
 		return true
 	
 	# Se não temos dados para este jogo, tentar carregar
 	if not user_progress.has(game_id) or not levels_unlocked.has(game_id):
-		print("⚠️  Dados do jogo não carregados para: ", game_id)
+		print("  Dados do jogo não carregados para: ", game_id)
 		load_user_progress(game_id)
 		return false
 	
-	# ✅ CORREÇÃO: Verificar se está na lista de desbloqueados
+	#  CORREÇÃO: Verificar se está na lista de desbloqueados
 	if level_name in levels_unlocked[game_id]:
-		print("✅ Acesso concedido (nível desbloqueado): ", level_name)
+		print(" Acesso concedido (nível desbloqueado): ", level_name)
 		return true
 	
-	# ✅ CORREÇÃO: Verificar lógica de progressão linear
+	#  CORREÇÃO: Verificar lógica de progressão linear
 	var level_prefix = "nivel" if game_id == "1" else "arvore_binaria_nivel"
 	var current_level_num = level_name.replace(level_prefix, "").to_int()
 	
@@ -262,13 +262,13 @@ func has_access_to_level(level_name: String, game_id: String) -> bool:
 		var previous_level_data = get_level_data(previous_level_name, game_id)
 		
 		if previous_level_data and previous_level_data.get("completed", false):
-			print("✅ Acesso concedido (nível anterior concluído): ", level_name)
+			print(" Acesso concedido (nível anterior concluído): ", level_name)
 			# Adicionar automaticamente aos desbloqueados
 			if not level_name in levels_unlocked[game_id]:
 				levels_unlocked[game_id].append(level_name)
 			return true
 	
-	print("❌ Acesso negado: ", level_name)
+	print(" Acesso negado: ", level_name)
 	return false
 
 # Verificação se nível está desbloqueado (compatibilidade)
@@ -293,19 +293,19 @@ func check_level_access(level_name: String, game_id: String = ""):
 	
 	# Verificação local primeiro
 	if has_access_to_level(level_name, game_id):
-		print("✅ Acesso concedido (verificação local)")
+		print(" Acesso concedido (verificação local)")
 		level_access_checked.emit(level_name, true)
 		return
 	
 	# Se não tem acesso local, verificar com servidor
 	if not SessionManager or SessionManager.auth_token == "":
-		print("❌ Usuário não autenticado")
+		print(" Usuário não autenticado")
 		level_access_checked.emit(level_name, false)
 		return
 	
 	# Se servidor não está disponível, negar acesso
 	if not server_available:
-		print("❌ Servidor indisponível")
+		print(" Servidor indisponível")
 		level_access_checked.emit(level_name, false)
 		return
 	
@@ -318,7 +318,7 @@ func check_level_access(level_name: String, game_id: String = ""):
 	
 	var error = http_request.request(url, headers, HTTPClient.METHOD_GET)
 	if error != OK:
-		print("❌ Erro ao verificar acesso ao nível")
+		print(" Erro ao verificar acesso ao nível")
 		level_access_checked.emit(level_name, false)
 		http_request.queue_free()
 
@@ -340,24 +340,24 @@ func _on_level_access_checked(result: int, response_code: int, headers: PackedSt
 					levels_unlocked[game_id] = []
 				if not level_name in levels_unlocked[game_id]:
 					levels_unlocked[game_id].append(level_name)
-				print("✅ Acesso concedido pelo servidor: ", level_name)
+				print(" Acesso concedido pelo servidor: ", level_name)
 			else:
-				print("❌ Acesso negado: ", response.get("reason", "Nível anterior não concluído"))
+				print(" Acesso negado: ", response.get("reason", "Nível anterior não concluído"))
 		else:
-			print("❌ Erro ao fazer parse do JSON de verificação de acesso")
+			print(" Erro ao fazer parse do JSON de verificação de acesso")
 	else:
-		print("❌ Erro na verificação de acesso - Código: ", response_code)
+		print(" Erro na verificação de acesso - Código: ", response_code)
 	
 	level_access_checked.emit(level_name, access_granted)
 
 # CORREÇÃO CRÍTICA: Sistema de salvamento com prevenção de duplicação
 func mark_level_completed(level_name: String, score: int):
 	var game_id = "2" if "arvore_binaria" in level_name else "1"
-	print("🎉 Marcando nível como concluído: ", level_name, " no jogo: ", game_id, " com score: ", score)
+	print(" Marcando nível como concluído: ", level_name, " no jogo: ", game_id, " com score: ", score)
 	
 	# CORREÇÃO CRÍTICA: Verificar se já está salvando
 	if save_in_progress.get(game_id, false):
-		print("⚠️  Salvamento já em andamento para jogo ", game_id, " - Adicionando à fila")
+		print("  Salvamento já em andamento para jogo ", game_id, " - Adicionando à fila")
 		pending_saves.push_back({"level": level_name, "score": score, "game_id": game_id})
 		return
 	
@@ -370,13 +370,13 @@ func mark_level_completed(level_name: String, score: int):
 # CORREÇÃO: Nova função para salvar pontuação no servidor
 func _save_score_to_server(level_name: String, score: int, game_id: String):
 	if not SessionManager or not SessionManager.is_authenticated():
-		print("❌ Usuário não autenticado - não é possível salvar progresso")
+		print(" Usuário não autenticado - não é possível salvar progresso")
 		save_in_progress[game_id] = false
 		_process_pending_saves()
 		return
 	
 	if not server_available:
-		print("❌ Servidor indisponível - não é possível salvar progresso")
+		print(" Servidor indisponível - não é possível salvar progresso")
 		save_in_progress[game_id] = false
 		_process_pending_saves()
 		return
@@ -399,7 +399,7 @@ func _save_score_to_server(level_name: String, score: int, game_id: String):
 	
 	var error = http_request.request("http://127.0.0.1:5000/save-score", headers, HTTPClient.METHOD_POST, body)
 	if error != OK:
-		print("❌ Erro ao enviar pontuação para o servidor")
+		print(" Erro ao enviar pontuação para o servidor")
 		save_in_progress[game_id] = false
 		_process_pending_saves()
 		http_request.queue_free()
@@ -411,7 +411,7 @@ func _on_score_saved(result: int, response_code: int, headers: PackedStringArray
 	save_in_progress[game_id] = false
 	
 	if result == HTTPRequest.RESULT_SUCCESS and response_code == 200:
-		print("✅ Pontuação salva no servidor com sucesso - LEVEL: ", level_name, " SCORE: ", score)
+		print(" Pontuação salva no servidor com sucesso - LEVEL: ", level_name, " SCORE: ", score)
 		
 		# CORREÇÃO: Atualizar cache local apenas após confirmação do servidor
 		_update_local_progress(level_name, score, game_id)
@@ -422,15 +422,15 @@ func _on_score_saved(result: int, response_code: int, headers: PackedStringArray
 		# Recarregar progresso do servidor para garantir sincronização
 		call_deferred("_reload_progress", game_id)
 	else:
-		print("❌ Falha ao salvar pontuação no servidor - Código: ", response_code)
+		print(" Falha ao salvar pontuação no servidor - Código: ", response_code)
 		
-		# ✅ CORREÇÃO: Mostrar detalhes do erro
+		#  CORREÇÃO: Mostrar detalhes do erro
 		var response_body = body.get_string_from_utf8()
-		print("🔍 Detalhes do erro: ", response_body)
+		print(" Detalhes do erro: ", response_body)
 		
-		# ✅ CORREÇÃO: Mesmo com erro no servidor, atualizar localmente
+		#  CORREÇÃO: Mesmo com erro no servidor, atualizar localmente
 		# para que o usuário veja o progresso imediatamente
-		print("🔄 Atualizando progresso localmente apesar do erro do servidor")
+		print(" Atualizando progresso localmente apesar do erro do servidor")
 		_update_local_progress(level_name, score, game_id)
 		progress_saved.emit(level_name, score)
 	
@@ -441,7 +441,7 @@ func _on_score_saved(result: int, response_code: int, headers: PackedStringArray
 func _process_pending_saves():
 	if pending_saves.size() > 0:
 		var next_save = pending_saves.pop_front()
-		print("🔄 Processando salvamento pendente: ", next_save.level, " - Score: ", next_save.score)
+		print(" Processando salvamento pendente: ", next_save.level, " - Score: ", next_save.score)
 		call_deferred("mark_level_completed", next_save.level, next_save.score)
 
 # CORREÇÃO: Nova função para atualizar progresso local
@@ -493,7 +493,7 @@ func _update_local_progress(level_name: String, score: int, game_id: String):
 	var next_level_name = _get_next_level_name(level_name, game_id)
 	if next_level_name != "" and not next_level_name in levels_unlocked[game_id]:
 		levels_unlocked[game_id].append(next_level_name)
-		print("🔓 Próximo nível desbloqueado automaticamente: ", next_level_name)
+		print(" Próximo nível desbloqueado automaticamente: ", next_level_name)
 
 # Obter o nome do próximo nível
 func _get_next_level_name(level_name: String, game_id: String) -> String:
@@ -513,12 +513,12 @@ func _get_next_level_name(level_name: String, game_id: String) -> String:
 func _reload_progress(game_id: String):
 	# Recarregar do servidor para garantir dados atualizados
 	if server_available and SessionManager and SessionManager.is_authenticated():
-		print("🔄 Recarregando progresso do servidor para jogo: ", game_id)
+		print(" Recarregando progresso do servidor para jogo: ", game_id)
 		load_user_progress(game_id)
 
 # Forçar atualização do status do servidor
 func refresh_server_status():
-	print("🔄 Atualizando status do servidor...")
+	print(" Atualizando status do servidor...")
 	_check_server_status()
 
 # Verificar se o servidor está disponível
@@ -527,7 +527,7 @@ func is_server_available() -> bool:
 
 # Limpar todo o cache (útil para logout)
 func clear_cache():
-	print("🧹 Limpando cache completo do ProgressManager")
+	print(" Limpando cache completo do ProgressManager")
 	user_progress.clear()
 	levels_unlocked.clear()
 	current_user_id = ""
@@ -536,10 +536,10 @@ func clear_cache():
 	save_in_progress.clear()
 	pending_saves.clear()
 	
-	print("✅ Cache limpo - pronto para novo usuário")
+	print(" Cache limpo - pronto para novo usuário")
 
 func force_clear_cache():
-	print("💥 FORÇANDO LIMPEZA COMPLETA DO CACHE")
+	print(" FORÇANDO LIMPEZA COMPLETA DO CACHE")
 	user_progress.clear()
 	levels_unlocked.clear()
 	current_user_id = ""
@@ -551,10 +551,10 @@ func force_clear_cache():
 		if child is HTTPRequest:
 			child.queue_free()
 	
-	print("✅ Cache forçado a limpar")
+	print(" Cache forçado a limpar")
 
 func _on_user_logged_out():
-	print("🚪 Usuário fez logout - limpando cache")
+	print(" Usuário fez logout - limpando cache")
 	force_clear_cache()
 
 
@@ -562,10 +562,10 @@ func _on_user_logged_out():
 
 func debug_backend_response():
 	if not SessionManager or not SessionManager.is_authenticated():
-		print("❌ Usuário não autenticado para debug")
+		print(" Usuário não autenticado para debug")
 		return
 	
-	print("🐛 INICIANDO DEBUG DO BACKEND...")
+	print(" INICIANDO DEBUG DO BACKEND...")
 	
 	var http_request = HTTPRequest.new()
 	get_tree().root.add_child(http_request)
@@ -579,34 +579,33 @@ func debug_backend_response():
 			
 			if parse_result == OK:
 				var response = json.get_data()
-				print("🐛 DEBUG BACKEND - RESPOSTA COMPLETA:")
+				print(" DEBUG BACKEND - RESPOSTA COMPLETA:")
 				print("   total_levels: ", response.get("total_levels"))
 				print("   completed_levels: ", response.get("completed_levels")) 
 				print("   next_level: ", response.get("next_level"))
-				print("   levels count: ", response.get("levels", []).size())
+				print("  levels count: ", response.get("levels", []).size())
 				
 				var levels = response.get("levels", [])
 				for i in range(levels.size()):
 					var level = levels[i]
 					print("   [", i, "] ", level.get("name"), " - unlocked: ", level.get("unlocked"), " - completed: ", level.get("completed"))
 			else:
-				print("❌ DEBUG: Erro ao parsear JSON")
+				print(" DEBUG: Erro ao parsear JSON")
 		else:
-			print("❌ DEBUG: Erro na requisição - Código: ", response_code)
+			print(" DEBUG: Erro na requisição - Código: ", response_code)
 	)
 	
 	var headers = ["Content-Type: application/json", "Authorization: Bearer " + SessionManager.auth_token]
 	var error = http_request.request("http://127.0.0.1:5000/user-progress?game_id=1", headers, HTTPClient.METHOD_GET)
 	if error != OK:
-		print("❌ DEBUG: Erro ao fazer requisição de debug")
+		print(" DEBUG: Erro ao fazer requisição de debug")
 
 
-# ✅ NOVA FUNÇÃO: Completar níveis faltantes quando o backend retorna menos de 10
 func _completar_niveis_faltantes(game_id: String, levels_array: Array, response: Dictionary):
 	var completed_levels_count = response.get("completed_levels", 0)
 	var next_level_name = response.get("next_level", "")
 	
-	print("🔄 Completando níveis faltantes para jogo ", game_id)
+	print(" Completando níveis faltantes para jogo ", game_id)
 	print("   - Níveis concluídos: ", completed_levels_count)
 	print("   - Próximo nível: ", next_level_name)
 	
@@ -628,7 +627,6 @@ func _completar_niveis_faltantes(game_id: String, levels_array: Array, response:
 		if not level_exists:
 			print("   + Adicionando nível faltante: ", level_name)
 			
-			# ✅ CORREÇÃO: Novo usuário - apenas o primeiro nível deve estar desbloqueado
 			var should_unlock = (level_num == 1)  # Apenas nível 1 desbloqueado para novos usuários
 			
 			var new_level_data = {
@@ -642,9 +640,9 @@ func _completar_niveis_faltantes(game_id: String, levels_array: Array, response:
 	
 	# Atualizar a resposta com os níveis completos
 	response["levels"] = levels_array
-	response["total_levels"] = 10  # ✅ SEMPRE 10 níveis totais
+	response["total_levels"] = 10  #  SEMPRE 10 níveis totais
 
-# ✅ NOVA FUNÇÃO: Desbloquear automaticamente o próximo nível após o último concluído
+#  NOVA FUNÇÃO: Desbloquear automaticamente o próximo nível após o último concluído
 func _desbloquear_proximo_nivel_automaticamente(game_id: String):
 	if not user_progress.has(game_id) or not levels_unlocked.has(game_id):
 		return
@@ -661,11 +659,11 @@ func _desbloquear_proximo_nivel_automaticamente(game_id: String):
 			if level_num > last_completed_level:
 				last_completed_level = level_num
 	
-	print("🎯 Último nível concluído encontrado: ", last_completed_level)
+	print(" Último nível concluído encontrado: ", last_completed_level)
 	
-	# ✅ CORREÇÃO CRÍTICA: Só desbloquear níveis adicionais se houver níveis concluídos
+	#  CORREÇÃO CRÍTICA: Só desbloquear níveis adicionais se houver níveis concluídos
 	if last_completed_level == 0:
-		print("🔒 Nenhum nível concluído - mantendo apenas o primeiro nível desbloqueado")
+		print("Nenhum nível concluído - mantendo apenas o primeiro nível desbloqueado")
 		# Garantir que apenas o primeiro nível está desbloqueado
 		var first_level = level_prefix + "1"
 		if not first_level in levels_unlocked[game_id]:
@@ -679,9 +677,9 @@ func _desbloquear_proximo_nivel_automaticamente(game_id: String):
 		
 		for level_name in levels_to_remove:
 			levels_unlocked[game_id].erase(level_name)
-			print("🔒 Removendo nível desbloqueado erroneamente: ", level_name)
+			print(" Removendo nível desbloqueado erroneamente: ", level_name)
 	else:
-		# ✅ CORREÇÃO: Desbloquear todos os níveis até o próximo após o último concluído
+		#  CORREÇÃO: Desbloquear todos os níveis até o próximo após o último concluído
 		for level_num in range(1, last_completed_level + 2):  # +2 para incluir o próximo nível
 			if level_num > 10:  # Não passar do nível 10
 				break
@@ -691,7 +689,7 @@ func _desbloquear_proximo_nivel_automaticamente(game_id: String):
 			# Adicionar à lista de desbloqueados se não estiver lá
 			if not level_name in levels_unlocked[game_id]:
 				levels_unlocked[game_id].append(level_name)
-				print("🔓 DESBLOQUEANDO NÍVEL: ", level_name)
+				print(" DESBLOQUEANDO NÍVEL: ", level_name)
 			
 			# Atualizar também no array de levels
 			var level_found = false
