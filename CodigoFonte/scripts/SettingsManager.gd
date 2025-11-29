@@ -52,7 +52,7 @@ func _ready():
 	
 	# Se o bus SFX não existir, criar
 	if sfx_bus == -1:
-		print("⚠️  Bus SFX não encontrado, criando...")
+		print("  Bus SFX não encontrado, criando...")
 		sfx_bus = AudioServer.get_bus_count()
 		AudioServer.add_bus(sfx_bus)
 		AudioServer.set_bus_name(sfx_bus, "SFX")
@@ -83,20 +83,20 @@ func _setup_music_timer():
 	music_timer.one_shot = true
 	music_timer.timeout.connect(_on_music_timer_timeout)
 	add_child(music_timer)
-	print("⏰ Timer de música de fundo configurado")
+	print(" Timer de música de fundo configurado")
 
 func _on_music_timer_timeout():
 	if is_background_music_playing:
-		print("🔁 Timer de música ativado - reiniciando música...")
+		print(" Timer de música ativado - reiniciando música...")
 		background_music_player.play()
 		
 		# Reiniciar o timer para a próxima execução (4 minutos = 240 segundos)
 		music_timer.start(240.0)
-		print("⏰ Próxima execução em 4 minutos")
+		print(" Próxima execução em 4 minutos")
 
 # Configurar os buses de áudio
 func _setup_audio_buses():
-	print("🎛️  Configurando buses de áudio...")
+	print("  Configurando buses de áudio...")
 	
 	# Configurar o bus Master
 	AudioServer.set_bus_send(master_bus, "Master")
@@ -104,13 +104,13 @@ func _setup_audio_buses():
 	# Configurar o bus SFX para enviar para Master
 	AudioServer.set_bus_send(sfx_bus, "Master")
 	
-	print("✅ Buses de áudio configurados:")
+	print(" Buses de áudio configurados:")
 	print("   - Master Bus: ", master_bus)
 	print("   - SFX Bus: ", sfx_bus)
 
 # Configurar players de áudio
 func _setup_audio_players():
-	print("🎵 Configurando players de áudio...")
+	print(" Configurando players de áudio...")
 	
 	# Player para teste de música (usa bus Master)
 	music_test_player = AudioStreamPlayer.new()
@@ -135,33 +135,33 @@ func _setup_audio_players():
 	
 	add_child(background_music_player)
 	
-	print("✅ Players de áudio configurados")
+	print(" Players de áudio configurados")
 
 # Carregar arquivos de áudio
 func _load_audio_files():
-	print("📁 Carregando arquivos de áudio...")
-	
+	print(" Carregando arquivos de áudio...")
+
 	# Verificar se os arquivos existem antes de carregar
 	if FileAccess.file_exists("res://sounds/test_music.wav"):
 		test_music_stream = load("res://sounds/test_music.wav")
 		if test_music_stream:
-			print("✅ Som de música carregado: res://sounds/test_music.wav")
+			print(" Som de música carregado: res://sounds/test_music.wav")
 			print("   - Duração: ", test_music_stream.get_length(), " segundos")
 			music_test_player.stream = test_music_stream
 		else:
-			print("❌ Erro ao carregar: res://sounds/test_music.wav")
+			print(" Erro ao carregar: res://sounds/test_music.wav")
 	else:
-		print("❌ Arquivo não encontrado: res://sounds/test_music.wav")
+		print(" Arquivo não encontrado: res://sounds/test_music.wav")
 	
 	if FileAccess.file_exists("res://sounds/test_fx.wav"):
 		test_fx_stream = load("res://sounds/test_fx.wav")
 		if test_fx_stream:
-			print("✅ Som de efeitos carregado: res://sounds/test_fx.wav")
+			print(" Som de efeitos carregado: res://sounds/test_fx.wav")
 			fx_test_player.stream = test_fx_stream
 		else:
-			print("❌ Erro ao carregar: res://sounds/test_fx.wav")
+			print(" Erro ao carregar: res://sounds/test_fx.wav")
 	else:
-		print("❌ Arquivo não encontrado: res://sounds/test_fx.wav")
+		print(" Arquivo não encontrado: res://sounds/test_fx.wav")
 
 # ===== MÚSICA DE FUNDO COM TIMER =====
 
@@ -169,11 +169,11 @@ func play_background_music(music_path: String = "", loop: bool = true) -> bool:
 	if music_path == "":
 		music_path = "res://sounds/test_music.wav"
 	
-	print("🎵 Iniciando música de fundo: ", music_path)
+	print(" Iniciando música de fundo: ", music_path)
 	
 	# Verificar se o arquivo existe
 	if not FileAccess.file_exists(music_path):
-		print("❌ Arquivo de música não encontrado: ", music_path)
+		print(" Arquivo de música não encontrado: ", music_path)
 		return false
 	
 	# Parar música atual se estiver tocando
@@ -183,7 +183,7 @@ func play_background_music(music_path: String = "", loop: bool = true) -> bool:
 	# Carregar stream
 	var music_stream = load(music_path)
 	if not music_stream:
-		print("❌ Erro ao carregar música de fundo: ", music_path)
+		print(" Erro ao carregar música de fundo: ", music_path)
 		return false
 	
 	# Salvar o caminho atual
@@ -202,7 +202,7 @@ func play_background_music(music_path: String = "", loop: bool = true) -> bool:
 		
 		# Iniciar timer para 4 minutos (240 segundos)
 		music_timer.start(240.0)
-		print("⏰ Timer iniciado: 4 minutos")
+		print(" Timer iniciado: 4 minutos")
 	else:
 		print("   - Modo: UMA VEZ")
 		music_timer.stop()
@@ -211,7 +211,7 @@ func play_background_music(music_path: String = "", loop: bool = true) -> bool:
 	background_music_player.play()
 	is_background_music_playing = true
 	
-	print("✅ Música de fundo iniciada:")
+	print(" Música de fundo iniciada:")
 	print("   - Volume: ", AudioServer.get_bus_volume_db(master_bus), " dB")
 	print("   - Loop: ", loop)
 	print("   - Estado: ", "TOCANDO" if background_music_player.playing else "PARADO")
@@ -231,7 +231,7 @@ func stop_background_music():
 		music_timer.stop()
 		is_background_music_playing = false
 		current_music_path = ""
-		print("⏹️  Música de fundo parada")
+		print("  Música de fundo parada")
 		background_music_stopped.emit()
 
 func toggle_background_music():
@@ -256,7 +256,7 @@ func set_music_interval(seconds: float):
 	if music_timer and music_timer.time_left > 0:
 		var remaining = music_timer.time_left
 		music_timer.start(seconds)
-		print("⏰ Intervalo da música ajustado para ", seconds, " segundos")
+		print(" Intervalo da música ajustado para ", seconds, " segundos")
 		print("   - Tempo anterior restante: ", remaining, " segundos")
 
 # Resto do código permanece igual...
@@ -266,12 +266,12 @@ func set_music_interval(seconds: float):
 # Carregar configurações do servidor
 func load_settings_from_server():
 	if not SessionManager or not SessionManager.is_authenticated():
-		print("❌ Usuário não autenticado - usando configurações locais")
+		print(" Usuário não autenticado - usando configurações locais")
 		apply_current_settings()
 		settings_loaded.emit()
 		return
 	
-	print("📥 Carregando configurações do servidor...")
+	print(" Carregando configurações do servidor...")
 	
 	var http_request = HTTPRequest.new()
 	get_tree().root.add_child(http_request)
@@ -282,7 +282,7 @@ func load_settings_from_server():
 	var error = http_request.request("http://127.0.0.1:5000/user-settings", headers, HTTPClient.METHOD_GET)
 	
 	if error != OK:
-		print("❌ Erro ao solicitar configurações")
+		print(" Erro ao solicitar configurações")
 		http_request.queue_free()
 		settings_loaded.emit()
 
@@ -301,7 +301,7 @@ func _on_settings_loaded(result: int, response_code: int, headers: PackedStringA
 			current_settings["fx_volume"] = server_settings.get("fx_volume", default_settings["fx_volume"])
 			current_settings["fullscreen"] = server_settings.get("fullscreen", default_settings["fullscreen"])
 			
-			print("✅ Configurações carregadas do servidor:")
+			print(" Configurações carregadas do servidor:")
 			print("   - Master Volume: ", current_settings["master_volume"])
 			print("   - FX Volume: ", current_settings["fx_volume"])
 			print("   - Fullscreen: ", current_settings["fullscreen"])
@@ -312,10 +312,10 @@ func _on_settings_loaded(result: int, response_code: int, headers: PackedStringA
 			# Salvar localmente como backup
 			save_local_settings()
 		else:
-			print("❌ Erro ao fazer parse das configurações do servidor")
+			print(" Erro ao fazer parse das configurações do servidor")
 			load_local_settings()
 	else:
-		print("❌ Falha ao carregar configurações do servidor - Código: ", response_code)
+		print(" Falha ao carregar configurações do servidor - Código: ", response_code)
 		load_local_settings()
 	
 	settings_loaded.emit()
@@ -323,7 +323,7 @@ func _on_settings_loaded(result: int, response_code: int, headers: PackedStringA
 # Salvar configurações no servidor
 func save_settings_to_server():
 	if not SessionManager or not SessionManager.is_authenticated():
-		print("❌ Usuário não autenticado - salvando apenas localmente")
+		print(" Usuário não autenticado - salvando apenas localmente")
 		save_local_settings()
 		settings_saved.emit()
 		return
@@ -347,7 +347,7 @@ func save_settings_to_server():
 	var error = http_request.request("http://127.0.0.1:5000/user-settings", headers, HTTPClient.METHOD_POST, body)
 	
 	if error != OK:
-		print("❌ Erro ao enviar configurações")
+		print(" Erro ao enviar configurações")
 		http_request.queue_free()
 		settings_saved.emit()
 
@@ -355,12 +355,12 @@ func _on_settings_saved(result: int, response_code: int, headers: PackedStringAr
 	http_request.queue_free()
 	
 	if result == HTTPRequest.RESULT_SUCCESS and response_code == 200:
-		print("✅ Configurações salvas no servidor com sucesso")
+		print(" Configurações salvas no servidor com sucesso")
 		
 		# Salvar também localmente
 		save_local_settings()
 	else:
-		print("❌ Falha ao salvar configurações no servidor - Código: ", response_code)
+		print(" Falha ao salvar configurações no servidor - Código: ", response_code)
 		# Salvar localmente como fallback
 		save_local_settings()
 	
@@ -368,7 +368,7 @@ func _on_settings_saved(result: int, response_code: int, headers: PackedStringAr
 
 # Resetar configurações para padrão
 func reset_settings_to_default():
-	print("🔄 Resetando configurações para padrão...")
+	print(" Resetando configurações para padrão...")
 	
 	if not SessionManager or not SessionManager.is_authenticated():
 		# Apenas resetar localmente
@@ -388,7 +388,7 @@ func reset_settings_to_default():
 	var error = http_request.request("http://127.0.0.1:5000/reset-user-settings", headers, HTTPClient.METHOD_POST)
 	
 	if error != OK:
-		print("❌ Erro ao resetar configurações")
+		print(" Erro ao resetar configurações")
 		http_request.queue_free()
 		settings_reset.emit()
 
@@ -405,7 +405,7 @@ func _on_settings_reset(result: int, response_code: int, headers: PackedStringAr
 			
 			# Atualizar configurações atuais
 			current_settings = default_settings_from_server
-			print("✅ Configurações resetadas no servidor")
+			print(" Configurações resetadas no servidor")
 			
 			# Aplicar configurações
 			apply_current_settings()
@@ -413,10 +413,10 @@ func _on_settings_reset(result: int, response_code: int, headers: PackedStringAr
 			# Salvar localmente
 			save_local_settings()
 		else:
-			print("❌ Erro ao fazer parse do reset")
+			print(" Erro ao fazer parse do reset")
 			_reset_local_settings()
 	else:
-		print("❌ Falha ao resetar configurações no servidor")
+		print(" Falha ao resetar configurações no servidor")
 		_reset_local_settings()
 	
 	settings_reset.emit()
@@ -429,7 +429,7 @@ func _reset_local_settings():
 # ===== APLICAÇÃO DAS CONFIGURAÇÕES =====
 
 func apply_current_settings():
-	print("🎛️  Aplicando configurações atuais...")
+	print("  Aplicando configurações atuais...")
 	
 	# Aplicar volumes de áudio
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(current_settings["master_volume"]))
@@ -443,9 +443,9 @@ func apply_current_settings():
 	if not Engine.is_editor_hint():
 		apply_fullscreen_setting()
 	else:
-		print("🖥️  Editor Godot - Fullscreen ignorado")
+		print(" Editor Godot - Fullscreen ignorado")
 	
-	print("✅ Configurações aplicadas:")
+	print(" Configurações aplicadas:")
 	print("   - Master Volume: ", current_settings["master_volume"], " (", linear_to_db(current_settings["master_volume"]), " dB)")
 	print("   - FX Volume: ", current_settings["fx_volume"], " (", linear_to_db(current_settings["fx_volume"]), " dB)")
 	print("   - Fullscreen: ", current_settings["fullscreen"])
@@ -499,9 +499,9 @@ func save_local_settings():
 	
 	var error = config.save("user://local_settings.cfg")
 	if error == OK:
-		print("💾 Configurações salvas localmente")
+		print(" Configurações salvas localmente")
 	else:
-		print("❌ Erro ao salvar configurações locais: ", error)
+		print(" Erro ao salvar configurações locais: ", error)
 
 func load_local_settings():
 	var config = ConfigFile.new()
@@ -512,10 +512,10 @@ func load_local_settings():
 		current_settings["fx_volume"] = config.get_value("audio", "fx_volume", default_settings["fx_volume"])
 		current_settings["fullscreen"] = config.get_value("video", "fullscreen", default_settings["fullscreen"])
 		
-		print("📥 Configurações locais carregadas")
+		print(" Configurações locais carregadas")
 		return true
 	else:
-		print("⚠️  Nenhuma configuração local encontrada, usando padrão")
+		print("  Nenhuma configuração local encontrada, usando padrão")
 		current_settings = default_settings.duplicate()
 		return false
 
@@ -559,26 +559,26 @@ func is_fullscreen() -> bool:
 # Tocar som de teste para música
 func play_music_test():
 	if test_music_stream and music_test_player:
-		print("🔊 Tocando teste de música no bus Master...")
+		print(" Tocando teste de música no bus Master...")
 		music_test_player.play()
 		audio_tested.emit("Master")
 	else:
-		print("❌ Não foi possível tocar teste de música")
+		print(" Não foi possível tocar teste de música")
 
 # Tocar som de teste para efeitos
 func play_fx_test():
 	if test_fx_stream and fx_test_player:
-		print("🔊 Tocando teste de efeitos no bus SFX...")
+		print(" Tocando teste de efeitos no bus SFX...")
 		fx_test_player.play()
 		audio_tested.emit("SFX")
 	else:
-		print("❌ Não foi possível tocar teste de efeitos")
+		print(" Não foi possível tocar teste de efeitos")
 
 # Função para tocar efeitos sonoros em todo o jogo
 func play_sound(sound_path: String, bus: String = "SFX") -> bool:
 	# Verificar se o arquivo existe
 	if not FileAccess.file_exists(sound_path):
-		print("❌ Arquivo de som não encontrado: ", sound_path)
+		print(" Arquivo de som não encontrado: ", sound_path)
 		return false
 	
 	var sound_stream = load(sound_path)
@@ -589,10 +589,10 @@ func play_sound(sound_path: String, bus: String = "SFX") -> bool:
 		player.finished.connect(player.queue_free)
 		add_child(player)
 		player.play()
-		print("🔊 Tocando som: ", sound_path, " no bus: ", bus)
+		print(" Tocando som: ", sound_path, " no bus: ", bus)
 		return true
 	else:
-		print("❌ Erro ao carregar som: ", sound_path)
+		print(" Erro ao carregar som: ", sound_path)
 		return false
 
 # Debug: imprimir configurações atuais
@@ -629,7 +629,7 @@ func setup_button_sound(button: BaseButton):
 		button.pressed.connect(_on_any_button_pressed)
 		connected_buttons.append(button)
 		
-		print("✅ Som configurado para botão: ", button.name)
+		print(" Som configurado para botão: ", button.name)
 
 func _on_button_pressed(button: BaseButton):
 	play_sound("res://sounds/test_fx.wav", "SFX")
@@ -670,12 +670,12 @@ func _on_any_button_pressed():
 # Funções para controlar o sistema
 func enable_button_sounds():
 	button_sound_enabled = true
-	print("🔊 Sons de botão ativados")
+	print(" Sons de botão ativados")
 
 func disable_button_sounds():
 	button_sound_enabled = false
-	print("🔇 Sons de botão desativados")
+	print(" Sons de botão desativados")
 
 func toggle_button_sounds():
 	button_sound_enabled = not button_sound_enabled
-	print("🔊 Sons de botão: ", "ATIVADOS" if button_sound_enabled else "DESATIVADOS")
+	print(" Sons de botão: ", "ATIVADOS" if button_sound_enabled else "DESATIVADOS")
