@@ -96,7 +96,7 @@ func load_saved_session() -> bool:
 	var error = config.load("user://session_data.cfg")
 	
 	if error != OK:
-		print("ℹ️  Nenhuma sessão anterior encontrada")
+		print("  Nenhuma sessão anterior encontrada")
 		return false
 	
 	if config.has_section_key("session", "auth_token") and config.has_section_key("session", "user_id"):
@@ -113,10 +113,10 @@ func load_saved_session() -> bool:
 		
 		# CORREÇÃO CRÍTICA: NUNCA retornar true para evitar login automático
 		# Apenas carregamos os dados para referência, mas não consideramos autenticado
-		print("⚠️  Sessão carregada apenas para referência - login automático DESABILITADO")
+		print("  Sessão carregada apenas para referência - login automático DESABILITADO")
 		return false
 	
-	print("❌ Sessão inválida ou expirada")
+	print(" Sessão inválida ou expirada")
 	return false
 
 # CORREÇÃO: Nova função para obter email salvo (para preencher campo de email)
@@ -151,9 +151,9 @@ func _save_session_data() -> void:
 	
 	var error = config.save("user://session_data.cfg")
 	if error == OK:
-		print("💾 Dados da sessão salvos localmente")
+		print(" Dados da sessão salvos localmente")
 	else:
-		print("❌ Erro ao salvar dados da sessão: ", error)
+		print(" Erro ao salvar dados da sessão: ", error)
 
 # Limpar dados da sessão salvos
 func _clear_session_data() -> void:
@@ -162,9 +162,9 @@ func _clear_session_data() -> void:
 		if dir.file_exists("user://session_data.cfg"):
 			var error = dir.remove("user://session_data.cfg")
 			if error == OK:
-				print("🧹 Dados da sessão removidos")
+				print(" Dados da sessão removidos")
 			else:
-				print("❌ Erro ao remover dados da sessão: ", error)
+				print(" Erro ao remover dados da sessão: ", error)
 
 # Obter cabeçalhos de autenticação para requisições HTTP
 func get_auth_headers() -> PackedStringArray:
@@ -188,11 +188,11 @@ func verify_token() -> bool:
 		http_request.queue_free()
 		
 		if not token_valid:
-			print("❌ Token inválido ou expirado")
+			print(" Token inválido ou expirado")
 			# Se o token é inválido, fazer logout automático
 			call_deferred("logout")
 		else:
-			print("✅ Token verificado com sucesso")
+			print(" Token verificado com sucesso")
 	)
 	
 	var headers = get_auth_headers()
@@ -216,7 +216,7 @@ func _ready():
 	profile_image = ""
 	user_id = ""
 	
-	print("🔐 Login automático DESABILITADO - usuário deve fazer login manualmente")
+	print(" Login automático DESABILITADO - usuário deve fazer login manualmente")
 
 # Obter dados do usuário em formato de dicionário
 func get_user_data() -> Dictionary:
@@ -282,5 +282,5 @@ func logout() -> void:
 
 # CORREÇÃO: Nova função para limpar completamente (útil para troca de usuário)
 func clear_completely():
-	print("🧹 SESSION MANAGER - Limpeza completa forçada")
+	print(" SESSION MANAGER - Limpeza completa forçada")
 	logout()
